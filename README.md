@@ -1,5 +1,5 @@
-# Projeto Base
-###  Projeto criado na aula de introdução ao Framework Laravel
+# Projeto
+###  sistema de comercialização de produtos para construção civil
 
 <p align="center">
  <a href="#-sobre-o-projeto">Sobre</a> •
@@ -11,14 +11,7 @@
 
 ## 💻 Sobre o projeto
 
-Este é um projeto base feito em Laravel com o Voyager para painel administrativo.
-### Laravel ele utiliza a arquitetura MVC
-- Model => [app\Models](./app/Models) (Tabelas banco)
-- Controllers => [app\Http\Controllers](./app/Http/Controllers) (Gerenciar Models e Views)
-- Views => [resources\views](./resources/views/) (Telas do app)
-- Routes (Rotas) => [routes\wep.php](./routes/web.php)
-
----
+Este é um projeto foi feito para facilitar o acesso a materiais de construção com um custo acessivel e de baixo tempo de espera.
 
 ## ⚙️ Funcionalidades
 
@@ -43,19 +36,16 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 #### Instalando as dependências
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/USUARIO/REPOSITORIO.git>
+$ git clone https://github.com/eluaar/projeto-leilao-materiais.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd projeto-base-laravel-voyager
+$ cd projeto-leilao-materiais
 
 # Instale as dependências composer
 $ composer install
 
-# Instale as dependências npm (frontend)
-$ npm install && npm run dev
-```
 #### Configurando o projeto
-1. Faça uma cópia do arquivo `.env.example` e renomeie para `.env`:
+1. Faça uma cópia do arquivo `.env-dev` e renomeie para `.env`:
 2. Crie um banco de dados
 > Sugestão MariaDB ou MySQL: definição de collation: **utf8mb4_general_ci**
 
@@ -64,10 +54,14 @@ $ npm install && npm run dev
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
-    DB_DATABASE=NOMEDOBANCO
-    DB_USERNAME=USUARIO
-    DB_PASSWORD=SENHA
+    DB_DATABASE=leilao
+    DB_USERNAME=root
+    DB_PASSWORD=
 ```
+4. importar o banco de dados
+> criar o database leilao
+> copiar o script [/database/backup/leilao.sql](/database/backup/leilao.sql) e executar no banco criado
+
 
 ### Limpar cache
 ```bash    
@@ -83,7 +77,7 @@ php artisan cache:clear
 php artisan key:generate
     
 # Criação das tabelas e inserção dos dados no banco de dados:
-php artisan migrate:fresh --force --seed
+php artisan migrate --force --seed
 
 # Execute a aplicação em modo de desenvolvimento
 php artisan serve
