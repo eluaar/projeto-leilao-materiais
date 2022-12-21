@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08-Dez-2022 às 16:41
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.1.1
+-- Tempo de geração: 21-Dez-2022 às 01:20
+-- Versão do servidor: 10.4.27-MariaDB
+-- versão do PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,8 +31,8 @@ CREATE TABLE `categories` (
   `id` int(10) UNSIGNED NOT NULL,
   `parent_id` int(10) UNSIGNED DEFAULT NULL,
   `order` int(11) NOT NULL DEFAULT 1,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -54,16 +54,16 @@ INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_a
 CREATE TABLE `data_rows` (
   `id` int(10) UNSIGNED NOT NULL,
   `data_type_id` int(10) UNSIGNED NOT NULL,
-  `field` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `field` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `display_name` varchar(255) NOT NULL,
   `required` tinyint(1) NOT NULL DEFAULT 0,
   `browse` tinyint(1) NOT NULL DEFAULT 1,
   `read` tinyint(1) NOT NULL DEFAULT 1,
   `edit` tinyint(1) NOT NULL DEFAULT 1,
   `add` tinyint(1) NOT NULL DEFAULT 1,
   `delete` tinyint(1) NOT NULL DEFAULT 1,
-  `details` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details` text DEFAULT NULL,
   `order` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -144,7 +144,27 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (70, 11, 'nome', 'text', 'Nome', 1, 1, 1, 1, 1, 1, '{}', 5),
 (71, 11, 'descricao', 'rich_text_box', 'Descricao', 0, 0, 1, 1, 1, 1, '{}', 6),
 (72, 11, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 7),
-(73, 11, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 8);
+(73, 11, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 8),
+(74, 11, 'leilo_belongsto_empresa_relationship', 'relationship', 'empresas', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Empresa\",\"table\":\"empresas\",\"type\":\"belongsTo\",\"column\":\"empresa_id\",\"key\":\"id\",\"label\":\"nome\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":null}', 9),
+(75, 11, 'leilo_belongsto_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"responsavel_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":null}', 10),
+(76, 12, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(77, 12, 'usuario_id', 'text', 'Usuario Id', 0, 0, 0, 0, 0, 0, '{}', 2),
+(78, 12, 'leilao_id', 'text', 'Leilao Id', 0, 0, 0, 0, 0, 0, '{}', 3),
+(79, 12, 'valor', 'number', 'Valor', 1, 1, 1, 1, 1, 1, '{}', 4),
+(80, 12, 'descricao', 'rich_text_box', 'Descricao', 0, 1, 1, 1, 1, 1, '{}', 5),
+(81, 12, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 6),
+(82, 12, 'updated_at', 'timestamp', 'Updated At', 0, 1, 1, 0, 0, 0, '{}', 7),
+(83, 12, 'lance_belongsto_leilo_relationship', 'relationship', 'leiloes', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Leilao\",\"table\":\"leiloes\",\"type\":\"belongsTo\",\"column\":\"leilao_id\",\"key\":\"id\",\"label\":\"nome\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":null}', 8),
+(84, 12, 'lance_belongsto_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"usuario_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":null}', 9),
+(85, 12, 'lance_belongsto_user_relationship_1', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"usuario_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":null}', 10),
+(86, 13, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(87, 13, 'leilao_id', 'text', 'Leilao Id', 0, 0, 0, 0, 0, 0, '{}', 2),
+(88, 13, 'material_id', 'text', 'Material Id', 0, 0, 0, 0, 0, 0, '{}', 3),
+(89, 13, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 4),
+(90, 13, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(91, 13, 'quantidade', 'text', 'Quantidade', 0, 1, 1, 1, 1, 1, '{}', 6),
+(92, 13, 'item_leilao_belongsto_leilo_relationship', 'relationship', 'leiloes', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Leilao\",\"table\":\"leiloes\",\"type\":\"belongsTo\",\"column\":\"leilao_id\",\"key\":\"id\",\"label\":\"nome\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":null}', 7),
+(93, 13, 'item_leilao_belongsto_materiai_relationship', 'relationship', 'materiais', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Material\",\"table\":\"materiais\",\"type\":\"belongsTo\",\"column\":\"material_id\",\"key\":\"id\",\"label\":\"nome\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":null}', 8);
 
 -- --------------------------------------------------------
 
@@ -154,18 +174,18 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 
 CREATE TABLE `data_types` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name_singular` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name_plural` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `model_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `policy_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `controller` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `display_name_singular` varchar(255) NOT NULL,
+  `display_name_plural` varchar(255) NOT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `model_name` varchar(255) DEFAULT NULL,
+  `policy_name` varchar(255) DEFAULT NULL,
+  `controller` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `generate_permissions` tinyint(1) NOT NULL DEFAULT 0,
   `server_side` tinyint(4) NOT NULL DEFAULT 0,
-  `details` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -183,7 +203,9 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29'),
 (7, 'empresas', 'empresas', 'Empresa', 'Empresas', 'voyager-company', 'App\\Models\\Empresa', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2022-12-08 19:34:58', '2022-12-08 19:34:58'),
 (9, 'materiais', 'materiais', 'Material', 'Materiais', 'voyager-treasure-open', 'App\\Models\\Material', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2022-12-08 19:37:17', '2022-12-08 19:37:17'),
-(11, 'leiloes', 'leiloes', 'Leilão', 'Leilões', 'voyager-data', 'App\\Models\\Leilao', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2022-12-08 19:40:53', '2022-12-08 19:40:53');
+(11, 'leiloes', 'leiloes', 'Leilão', 'Leilões', 'voyager-data', 'App\\Models\\Leilao', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2022-12-08 19:40:53', '2022-12-08 19:40:53'),
+(12, 'lances', 'lances', 'Lance', 'Lances', 'voyager-hammer', 'App\\Models\\Lance', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2022-12-21 03:09:29', '2022-12-21 03:09:29'),
+(13, 'item_leilao', 'item-leilao', 'Item Leilao', 'Item Leilaos', 'voyager-hammer', 'App\\Models\\ItemLeilao', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2022-12-21 03:14:27', '2022-12-21 03:14:27');
 
 -- --------------------------------------------------------
 
@@ -193,8 +215,8 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 
 CREATE TABLE `empresas` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nome` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cnpj` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nome` text NOT NULL,
+  `cnpj` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -207,11 +229,11 @@ CREATE TABLE `empresas` (
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -241,7 +263,7 @@ CREATE TABLE `lances` (
   `usuario_id` int(11) DEFAULT NULL,
   `leilao_id` int(11) DEFAULT NULL,
   `valor` float NOT NULL,
-  `descricao` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descricao` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -257,8 +279,8 @@ CREATE TABLE `leiloes` (
   `data_limite` datetime DEFAULT NULL,
   `empresa_id` int(11) DEFAULT NULL,
   `responsavel_id` int(11) DEFAULT NULL,
-  `nome` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descricao` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nome` text NOT NULL,
+  `descricao` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -271,8 +293,8 @@ CREATE TABLE `leiloes` (
 
 CREATE TABLE `materiais` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nome` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `marca` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nome` text NOT NULL,
+  `marca` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -285,7 +307,7 @@ CREATE TABLE `materiais` (
 
 CREATE TABLE `menus` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -306,17 +328,17 @@ INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
 CREATE TABLE `menu_items` (
   `id` int(10) UNSIGNED NOT NULL,
   `menu_id` int(10) UNSIGNED DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `target` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '_self',
-  `icon_class` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `target` varchar(255) NOT NULL DEFAULT '_self',
+  `icon_class` varchar(255) DEFAULT NULL,
+  `color` varchar(255) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `order` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `route` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `parameters` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `route` varchar(255) DEFAULT NULL,
+  `parameters` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -339,7 +361,9 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 7, '2022-12-08 19:14:29', '2022-12-08 19:14:29', 'voyager.pages.index', NULL),
 (14, 1, 'Empresas', '', '_self', 'voyager-company', NULL, NULL, 15, '2022-12-08 19:34:59', '2022-12-08 19:34:59', 'voyager.empresas.index', NULL),
 (15, 1, 'Materiais', '', '_self', 'voyager-treasure-open', NULL, NULL, 16, '2022-12-08 19:37:17', '2022-12-08 19:37:17', 'voyager.materiais.index', NULL),
-(16, 1, 'Leilões', '', '_self', 'voyager-data', NULL, NULL, 17, '2022-12-08 19:40:53', '2022-12-08 19:40:53', 'voyager.leiloes.index', NULL);
+(16, 1, 'Leilões', '', '_self', 'voyager-data', NULL, NULL, 17, '2022-12-08 19:40:53', '2022-12-08 19:40:53', 'voyager.leiloes.index', NULL),
+(17, 1, 'Lances', '', '_self', 'voyager-hammer', NULL, NULL, 18, '2022-12-21 03:09:30', '2022-12-21 03:09:30', 'voyager.lances.index', NULL),
+(18, 1, 'Item Leilaos', '', '_self', 'voyager-hammer', NULL, NULL, 19, '2022-12-21 03:14:27', '2022-12-21 03:14:27', 'voyager.item-leilao.index', NULL);
 
 -- --------------------------------------------------------
 
@@ -349,7 +373,7 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -397,14 +421,14 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `pages` (
   `id` int(10) UNSIGNED NOT NULL,
   `author_id` int(11) NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `excerpt` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `meta_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_keywords` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` enum('ACTIVE','INACTIVE') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'INACTIVE',
+  `title` varchar(255) NOT NULL,
+  `excerpt` text DEFAULT NULL,
+  `body` text DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) NOT NULL,
+  `meta_description` text DEFAULT NULL,
+  `meta_keywords` text DEFAULT NULL,
+  `status` enum('ACTIVE','INACTIVE') NOT NULL DEFAULT 'INACTIVE',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -423,8 +447,8 @@ INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `sl
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -436,8 +460,8 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `permissions` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `table_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `key` varchar(255) NOT NULL,
+  `table_name` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -501,7 +525,17 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (52, 'read_leiloes', 'leiloes', '2022-12-08 19:40:53', '2022-12-08 19:40:53'),
 (53, 'edit_leiloes', 'leiloes', '2022-12-08 19:40:53', '2022-12-08 19:40:53'),
 (54, 'add_leiloes', 'leiloes', '2022-12-08 19:40:53', '2022-12-08 19:40:53'),
-(55, 'delete_leiloes', 'leiloes', '2022-12-08 19:40:53', '2022-12-08 19:40:53');
+(55, 'delete_leiloes', 'leiloes', '2022-12-08 19:40:53', '2022-12-08 19:40:53'),
+(56, 'browse_lances', 'lances', '2022-12-21 03:09:29', '2022-12-21 03:09:29'),
+(57, 'read_lances', 'lances', '2022-12-21 03:09:29', '2022-12-21 03:09:29'),
+(58, 'edit_lances', 'lances', '2022-12-21 03:09:29', '2022-12-21 03:09:29'),
+(59, 'add_lances', 'lances', '2022-12-21 03:09:29', '2022-12-21 03:09:29'),
+(60, 'delete_lances', 'lances', '2022-12-21 03:09:30', '2022-12-21 03:09:30'),
+(61, 'browse_item_leilao', 'item_leilao', '2022-12-21 03:14:27', '2022-12-21 03:14:27'),
+(62, 'read_item_leilao', 'item_leilao', '2022-12-21 03:14:27', '2022-12-21 03:14:27'),
+(63, 'edit_item_leilao', 'item_leilao', '2022-12-21 03:14:27', '2022-12-21 03:14:27'),
+(64, 'add_item_leilao', 'item_leilao', '2022-12-21 03:14:27', '2022-12-21 03:14:27'),
+(65, 'delete_item_leilao', 'item_leilao', '2022-12-21 03:14:27', '2022-12-21 03:14:27');
 
 -- --------------------------------------------------------
 
@@ -573,7 +607,17 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (52, 1),
 (53, 1),
 (54, 1),
-(55, 1);
+(55, 1),
+(56, 1),
+(57, 1),
+(58, 1),
+(59, 1),
+(60, 1),
+(61, 1),
+(62, 1),
+(63, 1),
+(64, 1),
+(65, 1);
 
 -- --------------------------------------------------------
 
@@ -583,11 +627,11 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -604,15 +648,15 @@ CREATE TABLE `posts` (
   `id` int(10) UNSIGNED NOT NULL,
   `author_id` int(11) NOT NULL,
   `category_id` int(11) DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seo_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `excerpt` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `meta_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_keywords` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` enum('PUBLISHED','DRAFT','PENDING') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'DRAFT',
+  `title` varchar(255) NOT NULL,
+  `seo_title` varchar(255) DEFAULT NULL,
+  `excerpt` text DEFAULT NULL,
+  `body` text NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) NOT NULL,
+  `meta_description` text DEFAULT NULL,
+  `meta_keywords` text DEFAULT NULL,
+  `status` enum('PUBLISHED','DRAFT','PENDING') NOT NULL DEFAULT 'DRAFT',
   `featured` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -636,8 +680,8 @@ INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `ex
 
 CREATE TABLE `roles` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `display_name` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -658,13 +702,13 @@ INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) V
 
 CREATE TABLE `settings` (
   `id` int(10) UNSIGNED NOT NULL,
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `details` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `key` varchar(255) NOT NULL,
+  `display_name` varchar(255) NOT NULL,
+  `value` text DEFAULT NULL,
+  `details` text DEFAULT NULL,
+  `type` varchar(255) NOT NULL,
   `order` int(11) NOT NULL DEFAULT 1,
-  `group` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `group` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -691,11 +735,11 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 
 CREATE TABLE `translations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `table_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `column_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `table_name` varchar(255) NOT NULL,
+  `column_name` varchar(255) NOT NULL,
   `foreign_key` int(10) UNSIGNED NOT NULL,
-  `locale` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `locale` varchar(255) NOT NULL,
+  `value` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -745,16 +789,16 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `role_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'users/default.png',
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `avatar` varchar(255) DEFAULT 'users/default.png',
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `two_factor_secret` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `two_factor_recovery_codes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `two_factor_secret` text DEFAULT NULL,
+  `two_factor_recovery_codes` text DEFAULT NULL,
   `two_factor_confirmed_at` timestamp NULL DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `settings` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `settings` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -955,13 +999,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de tabela `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT de tabela `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `empresas`
@@ -1009,7 +1053,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT de tabela `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `migrations`
@@ -1027,7 +1071,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT de tabela `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de tabela `personal_access_tokens`
