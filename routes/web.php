@@ -17,6 +17,26 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/leiloes', function () {
+    $leiloes = App\Models\Leilao::all();
+    return view('leiloes.index', compact('leiloes'));
+})->name('leiloes.index');
+
+Route::get('/empresas', function () {
+    $empresas = App\Models\Empresa::all();
+    return view('empresas.index', compact('empresas'));
+})->name('empresas.index');
+
+Route::get('/materiais', function () {
+    $materiais = App\Models\Material::all();
+    return view('materiais.index', compact('materiais'));
+})->name('materiais.index');
+
+Route::get('/lances', function () {
+    $lances = App\Models\Lance::all();
+    return view('lances.index', compact('lances'));
+})->name('lances.index');
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
