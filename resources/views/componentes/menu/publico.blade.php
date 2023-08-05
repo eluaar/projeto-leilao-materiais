@@ -10,8 +10,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('leiloes.index')}}">Leilões</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('materiais.index')}}">Materiais</a></li>
                 <!-- Authentication Links -->
                 @includeIf('componentes.menu.item.login')
             </ul>

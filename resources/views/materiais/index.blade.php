@@ -6,7 +6,7 @@
 
 @forelse ($materiais as $material)
 <div class="card" style="width: 18rem;">
-    <img src="baiano.jpg" class="card-img-top" alt="...">
+    <img src="{{Voyager::image($material->foto)}}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{$material->nome}}</h5>
       <p class="card-text">{{$material->marca}}</p>

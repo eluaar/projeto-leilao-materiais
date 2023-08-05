@@ -22,6 +22,11 @@ Route::get('/leiloes', function () {
     return view('leiloes.index', compact('leiloes'));
 })->name('leiloes.index');
 
+Route::get('/leiloes/{id}', function ($id) {
+    $leilao = App\Models\Leilao::find($id);
+    return view('leiloes.show', compact('leilao'));
+})->name('leiloes.show');
+
 Route::get('/empresas', function () {
     $empresas = App\Models\Empresa::all();
     return view('empresas.index', compact('empresas'));
