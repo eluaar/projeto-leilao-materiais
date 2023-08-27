@@ -10,6 +10,7 @@
     <div class="card-body">
       <h5 class="card-title">{{$leilao->nome}}</h5>
       <p class="card-text">{!!$leilao->descricao!!}</p>
+      <p>{{$leilao?->comprador?->name}}</p>
       <a href="{{route('leiloes.show', ['id'=>$leilao->id])}}" class="btn btn-primary">Efetuar lance</a>
     </div>
   </div>

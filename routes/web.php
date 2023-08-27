@@ -32,15 +32,30 @@ Route::get('/empresas', function () {
     return view('empresas.index', compact('empresas'));
 })->name('empresas.index');
 
+Route::get('/empresas/{id}', function ($id) {
+    $empresa = App\Models\Empresa::find($id);
+    return view('empresas.show', compact('empresa'));
+})->name('empresas.show');
+
 Route::get('/materiais', function () {
     $materiais = App\Models\Material::all();
     return view('materiais.index', compact('materiais'));
 })->name('materiais.index');
 
+Route::get('/materiais/{id}', function ($id) {
+    $material = App\Models\Material::find($id);
+    return view('materiais.show', compact('material'));
+})->name('materiais.show');
+
 Route::get('/lances', function () {
     $lances = App\Models\Lance::all();
     return view('lances.index', compact('lances'));
 })->name('lances.index');
+
+Route::get('/lances/{id}', function ($id) {
+    $lance = App\Models\Lance::find($id);
+    return view('lances.show', compact('lance'));
+})->name('lances.show');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

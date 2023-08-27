@@ -12,6 +12,9 @@
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link" href="{{route('leiloes.index')}}">Leilões</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{route('materiais.index')}}">Materiais</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('empresas.index')}}">Empresas</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('lances.index')}}">Lances</a></li>
+
                 <!-- Authentication Links -->
                 @includeIf('componentes.menu.item.login')
             </ul>
