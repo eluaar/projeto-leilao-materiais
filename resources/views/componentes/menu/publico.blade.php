@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="{{url('/#page-top')}}">
-            <i class="fa-solid fa-shuttle-space"></i> {{env('APP_NAME')}}
+            <img src="{{@asset('assets/images/logo_leilao.png')}}" alt="">
+           <!-- <i class="fa-solid fa-shuttle-space"></i> --> {{env('APP_NAME')}}
 
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,11 +11,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="{{route('leiloes.index')}}">Leilões</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('materiais.index')}}">Materiais</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('empresas.index')}}">Empresas</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('lances.index')}}">Lances</a></li>
-
                 <!-- Authentication Links -->
                 @includeIf('componentes.menu.item.login')
             </ul>
