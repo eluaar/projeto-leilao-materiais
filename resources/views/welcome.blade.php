@@ -6,12 +6,13 @@
     <div class="container">
         <div class="masthead-subheading">
            {{setting('')}}
+         Sistema de Comercialização de Materiais para Construção Civil
         </div>
         <div class="masthead-heading text-uppercase">
-            {{setting('')}}
+            {{setting('')}} Web leilão
         </div>
-        <a class="btn btn-primary btn-xl text-uppercase" href="#services">
-            {{$botao ?? 'Conheça nosso sistema'}}
+        <a class="btn btn-outline-light btn-xl text-uppercase" href="#services">
+            {{$botao ?? 'Serviços disponibilizados'}}
         </a>
     </div>
 </header>
@@ -35,6 +36,7 @@
                 <span class="fa-stack fa-4x">
                     <i class="fas fa-circle fa-stack-2x text-primary"></i>
                     <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+
                 </span>
                 <h4 class="my-3">Desing responsivo</h4>
                 <p class="text-muted">Além de um desing responsivo e prático, o sistema busca oferecer comodidade para os usuários.</p>
@@ -55,7 +57,7 @@
 <section class="page-section" id="about">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Exemplo timeline</h2>
+            <h2 class="section-heading text-uppercase">Funcionamento do leilão</h2>
             <h3 class="section-subheading text-muted">Pode ser usada em eventos sequenciais</h3>
         </div>
         <ul class="timeline">
