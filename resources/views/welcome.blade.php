@@ -127,40 +127,36 @@
                 <div class="team-member">
                     <img class="" src="{{asset('assets/images/andre.jpeg')}}" alt="..." />
                     <h4>André Quintiliano Bezerra</h4>
-                    <p class="text-muted">Cientista de computação</p>
+                   <!-- <p class="text-muted">Cientista de computação</p> -->
                     <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="team-member">
                     <img class="" src="{{asset('assets/images/ana.jpeg')}}" alt="..." />
                     <h4>Ana Clara Obregon Dias</h4>
-                    <p class="text-muted">Técnica em Informática</p>
+                   <!-- <p class="text-muted">Técnica em Informática</p> -->
                     <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="team-member">
                     <img class="" src="{{asset('assets/images/exemplos/3.jpg')}}" alt="..." />
                     <h4>Érica Torres</h4>
-                    <p class="text-muted">Técnica em Informática</p>
+                  <!--  <p class="text-muted">Técnica em Informática</p>-->
                     <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="team-member">
                     <img class="" src="{{asset('assets/images/exemplos/3.jpg')}}" alt="..." />
                     <h4>Aurélio Ramos Junior</h4>
-                    <p class="text-muted">Cientista de computação</p>
+                   <!-- <p class="text-muted">Cientista de computação</p>-->
                     <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
