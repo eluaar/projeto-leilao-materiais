@@ -26,7 +26,7 @@
         <div class="row text-center">
             <div class="col-md-4">
                 <span class="fa-stack fa-4x">
-                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fas fa-circle fa-stack-2x"></i>
                     <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
                 </span>
                 <h4 class="my-3">E-Commerce</h4>
@@ -34,7 +34,7 @@
             </div>
             <div class="col-md-4">
                 <span class="fa-stack fa-4x">
-                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fas fa-circle fa-stack-2x"></i>
                     <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
 
                 </span>
@@ -43,7 +43,7 @@
             </div>
             <div class="col-md-4">
                 <span class="fa-stack fa-4x">
-                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fas fa-circle fa-stack-2x"></i>
                     <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
                 </span>
                 <h4 class="my-3">Segurança</h4>
@@ -123,40 +123,40 @@
             <h3 class="section-subheading text-muted"></h3>
         </div>
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="team-member">
                     <img class="" src="{{asset('assets/images/andre.jpeg')}}" alt="..." />
                     <h4>André Quintiliano Bezerra</h4>
                    <!-- <p class="text-muted">Cientista de computação</p> -->
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://github.com/andreqbs" target="_blank" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-brands fa-github"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/andreqbs/" target="_blank" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-brands fa-linkedin"></i></a>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="team-member">
                     <img class="" src="{{asset('assets/images/ana.jpeg')}}" alt="..." />
                     <h4>Ana Clara Obregon Dias</h4>
                    <!-- <p class="text-muted">Técnica em Informática</p> -->
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-brands fa-instagram"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="team-member">
                     <img class="" src="{{asset('assets/images/exemplos/3.jpg')}}" alt="..." />
                     <h4>Érica Torres</h4>
                   <!--  <p class="text-muted">Técnica em Informática</p>-->
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://github.com/eluaar" target="_blank" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-brands fa-github"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="team-member">
                     <img class="" src="{{asset('assets/images/exemplos/3.jpg')}}" alt="..." />
                     <h4>Aurélio Ramos Junior</h4>
                    <!-- <p class="text-muted">Cientista de computação</p>-->
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://github.com/aurelio-ramos" target="_blank" aria-label="Larry Parker Facebook Profile"><i class="fab fa-brands fa-github"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/ramos-junior/" target="_blank" aria-label="Larry Parker Twitter Profile"><i class="fab fa-brands fa-linkedin"></i></a>
                 </div>
             </div>
         </div>

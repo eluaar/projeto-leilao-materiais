@@ -49,13 +49,10 @@
                 <div class="row align-items-center">
                     <div class="col-lg-4 text-lg-start">Copyright © {{ env('APP_NAME') }}</div>
                     <div class="col-lg-4 my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter">
-                            <i class="fab fa-twitter"></i>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.figma.com/file/KhlongugXGkdEh2jWUBJGV/TCC_Leil%C3%A3o_De_Materiais?type=whiteboard&node-id=0-1&t=bSjFN6YJGXGzkla2-0" aria-label="Figma">
+                            <i class="fab fa-figma"></i>
                         </a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Github">
+                        <a class="btn btn-dark btn-social mx-2" href="https://github.com/eluaar/projeto-leilao-materiais" target="_blank" aria-label="Github">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08-Set-2023 às 01:20
+-- Tempo de geração: 17-Set-2023 às 01:37
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.1
 
@@ -310,7 +310,7 @@ CREATE TABLE `leiloes` (
 --
 
 INSERT INTO `leiloes` (`id`, `data_limite`, `comprador_id`, `nome`, `descricao`, `created_at`, `updated_at`) VALUES
-(1, '2023-08-03 00:00:00', 3, 'leilao materiais', '<p>preciso de 100 tijolos&nbsp;</p>', '2023-08-04 04:52:46', '2023-08-11 03:47:12');
+(1, '2023-08-03 00:00:00', 3, 'leilao materiais', '<p>preciso de 100 tijolos&nbsp;</p>', '2023-08-04 04:52:46', '2023-09-13 22:41:28');
 
 -- --------------------------------------------------------
 
@@ -596,6 +596,7 @@ CREATE TABLE `permission_role` (
 INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (1, 1),
 (1, 2),
+(1, 3),
 (2, 1),
 (3, 1),
 (4, 1),
@@ -611,7 +612,9 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (14, 1),
 (15, 1),
 (16, 1),
+(16, 3),
 (17, 1),
+(17, 3),
 (18, 1),
 (19, 1),
 (20, 1),
@@ -636,30 +639,40 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (39, 1),
 (40, 1),
 (41, 1),
+(41, 3),
 (42, 1),
+(42, 3),
 (43, 1),
 (44, 1),
 (45, 1),
 (46, 1),
 (46, 2),
+(46, 3),
 (47, 1),
+(47, 3),
 (48, 1),
 (49, 1),
 (50, 1),
 (51, 1),
 (51, 2),
+(51, 3),
 (52, 1),
 (52, 2),
+(52, 3),
 (53, 1),
 (54, 1),
 (55, 1),
 (56, 1),
+(56, 3),
 (57, 1),
+(57, 3),
 (58, 1),
 (59, 1),
 (60, 1),
 (61, 1),
+(61, 3),
 (62, 1),
+(62, 3),
 (63, 1),
 (64, 1),
 (65, 1);
@@ -737,7 +750,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'Administrator', '2022-12-08 19:14:29', '2022-12-08 19:14:29'),
-(2, 'user', 'Normal User', '2022-12-08 19:14:29', '2022-12-08 19:14:29');
+(2, 'user', 'Normal User', '2022-12-08 19:14:29', '2022-12-08 19:14:29'),
+(3, 'gestor', 'Gestor', '2023-09-17 03:30:53', '2023-09-17 03:30:53');
 
 -- --------------------------------------------------------
 
@@ -856,7 +870,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `settings`, `created_at`, `updated_at`, `empresa_id`) VALUES
 (1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$DcaZZFKg3IHWu5.KwJnJtOw37OwWC2juM2yEch5KXVgSTzr4g2pxC', NULL, NULL, NULL, 'owoDznOvIVxytqYWrhhkeyzkyQPS0DL8vnrHHG85bJAB1ntJ1eKCPDXvtJfg', NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29', NULL),
 (2, 2, 'usuario normal', 'usuario@usuario.com', 'users/default.png', NULL, '$2y$10$8WyOvplEBm9jUqumjiNT7.JAaX8g.cCreaONYFIKq0i2VuOMLzeim', NULL, NULL, NULL, NULL, '{\"locale\":\"pt_br\"}', '2023-08-06 02:01:49', '2023-08-06 02:01:49', NULL),
-(3, 2, 'ana clara', 'ana@ana.com', 'users/default.png', NULL, '$2y$10$2BQy9BiiCLqVrW8w.Y9t4upcs/uEOVUDHgKgSMzk5gQK7cTxX/Aly', NULL, NULL, NULL, NULL, NULL, '2023-08-06 02:07:13', '2023-08-06 02:07:13', NULL);
+(3, 2, 'ana clara', 'ana@ana.com', 'users/default.png', NULL, '$2y$10$2BQy9BiiCLqVrW8w.Y9t4upcs/uEOVUDHgKgSMzk5gQK7cTxX/Aly', NULL, NULL, NULL, NULL, NULL, '2023-08-06 02:07:13', '2023-08-06 02:07:13', NULL),
+(4, NULL, 'Gestor', 'gestor@gestor.com', 'users/default.png', NULL, '$2y$10$D6gPYIGEdBy0ggjWd7yTu.IwEMTIM9Wqnw28/vxylq2d20zGA.H7K', NULL, NULL, NULL, NULL, '{\"locale\":\"al\"}', '2023-09-17 03:36:49', '2023-09-17 03:36:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -1137,7 +1152,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT de tabela `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `settings`
@@ -1155,7 +1170,7 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restrições para despejos de tabelas
