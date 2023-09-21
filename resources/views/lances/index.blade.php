@@ -10,7 +10,7 @@
     <div class="card-body">
       <h5 class="card-title">{{$lance->nome}}</h5>
       <p class="card-text">{{$lance->tempo}}</p>
-      <a href="{{route('lances.show', ['id'=>$lance->id])}}" class="btn btn-primary">Dar lance</a>
+      <a href="{{route('lances.show', ['id'=>$lance->id])}}" class="btn btn-dark">Dar lance</a>
     </div>
   </div>
   @empty

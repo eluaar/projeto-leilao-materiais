@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 
 class Material extends Model
@@ -12,8 +13,8 @@ class Material extends Model
     public function save(array $options = [])
     {
         // Se nenhum autor tiver sido atribuído, atribua o id do usuário atual como autor do post
-        if (!$this->material_id && Auth::user()) {
-            $this->material_id = Auth::user()->getKey();
+        if (!$this->comprador_id && Auth::user()) {
+            $this->comprador_id = Auth::user()->getKey();
         }
 
         return parent::save();
@@ -23,9 +24,9 @@ class Material extends Model
      * Relacionamento pertence a (Muitos para Um)
      * usando Laravel
      */
-    public function material()
+    public function comprador()
     {
-        return $this->belongsTo(User::class, 'material_id', 'id');
+        return $this->belongsTo(User::class, 'comprador_id', 'id');
     }
 }
 

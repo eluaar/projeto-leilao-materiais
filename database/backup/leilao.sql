@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17-Set-2023 às 01:37
+-- Tempo de geração: 22-Set-2023 às 00:47
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.1
 
@@ -169,7 +169,9 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (103, 12, 'fornecedor_id', 'text', 'Fornecedor Id', 0, 0, 0, 0, 0, 0, '{}', 8),
 (104, 12, 'lance_belongsto_item_leilao_relationship', 'relationship', 'itens do leilão', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\ItemLeilao\",\"table\":\"item_leilao\",\"type\":\"belongsTo\",\"column\":\"item_leilao_id\",\"key\":\"id\",\"label\":\"material_id\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 12),
 (105, 12, 'prazo_entrega', 'text', 'Prazo Entrega', 0, 1, 1, 1, 1, 1, '{}', 7),
-(106, 12, 'item_leilao_id', 'text', 'Item Leilao Id', 0, 1, 1, 1, 1, 1, '{}', 8);
+(106, 12, 'item_leilao_id', 'text', 'Item Leilao Id', 0, 1, 1, 1, 1, 1, '{}', 8),
+(107, 9, 'materiai_belongsto_user_relationship', 'relationship', 'Comprador', 0, 1, 1, 0, 0, 1, '{\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"comprador_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7),
+(108, 9, 'comprador_id', 'text', 'Comprador Id', 0, 0, 0, 0, 0, 0, '{}', 7);
 
 -- --------------------------------------------------------
 
@@ -207,7 +209,7 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29'),
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29'),
 (7, 'empresas', 'empresas', 'Empresa', 'Empresas', 'voyager-company', 'App\\Models\\Empresa', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2022-12-08 19:34:58', '2022-12-08 19:34:58'),
-(9, 'materiais', 'materiais', 'Material', 'Materiais', 'voyager-treasure-open', 'App\\Models\\Material', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-08 19:37:17', '2023-08-27 04:41:14'),
+(9, 'materiais', 'materiais', 'Material', 'Materiais', 'voyager-treasure-open', 'App\\Models\\Material', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-08 19:37:17', '2023-09-22 02:20:36'),
 (11, 'leiloes', 'leiloes', 'Leilão', 'Leilões', 'voyager-data', 'App\\Models\\Leilao', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-08 19:40:53', '2023-08-11 03:39:58'),
 (12, 'lances', 'lances', 'Lance', 'Lances', 'voyager-hammer', 'App\\Models\\Lance', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-21 03:09:29', '2023-08-27 04:36:37'),
 (13, 'item_leilao', 'item-leilao', 'Item Leilao', 'Item Leilaos', 'voyager-hammer', 'App\\Models\\ItemLeilao', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-21 03:14:27', '2023-08-27 04:40:27');
@@ -310,7 +312,7 @@ CREATE TABLE `leiloes` (
 --
 
 INSERT INTO `leiloes` (`id`, `data_limite`, `comprador_id`, `nome`, `descricao`, `created_at`, `updated_at`) VALUES
-(1, '2023-08-03 00:00:00', 3, 'leilao materiais', '<p>preciso de 100 tijolos&nbsp;</p>', '2023-08-04 04:52:46', '2023-09-13 22:41:28');
+(1, '2023-08-03 00:00:00', 3, 'leilao materiais', '<p>preciso de 100 tijolos&nbsp;</p>', '2023-08-04 04:52:46', '2023-09-22 02:46:31');
 
 -- --------------------------------------------------------
 
@@ -324,16 +326,17 @@ CREATE TABLE `materiais` (
   `marca` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `foto` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `foto` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comprador_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `materiais`
 --
 
-INSERT INTO `materiais` (`id`, `nome`, `marca`, `created_at`, `updated_at`, `foto`) VALUES
-(1, '1.000 Tijolos', 'Baiano', '2023-08-06 00:28:39', '2023-08-06 01:33:04', 'materiais\\August2023\\KgPVEoed29vsYfknmiJl.jpg'),
-(2, 'Cimento', 'CP-II F', '2023-08-06 00:42:30', '2023-08-06 01:35:57', 'materiais\\August2023\\kICnICME8TZmNrohyIiE.jpg');
+INSERT INTO `materiais` (`id`, `nome`, `marca`, `created_at`, `updated_at`, `foto`, `comprador_id`) VALUES
+(1, '1.000 Tijolos', 'Baiano', '2023-08-06 00:28:39', '2023-09-22 02:46:14', 'materiais\\August2023\\KgPVEoed29vsYfknmiJl.jpg', 1),
+(2, 'Cimento', 'CP-II F', '2023-08-06 00:42:30', '2023-09-22 02:46:05', 'materiais\\August2023\\kICnICME8TZmNrohyIiE.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -868,7 +871,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `settings`, `created_at`, `updated_at`, `empresa_id`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$DcaZZFKg3IHWu5.KwJnJtOw37OwWC2juM2yEch5KXVgSTzr4g2pxC', NULL, NULL, NULL, 'owoDznOvIVxytqYWrhhkeyzkyQPS0DL8vnrHHG85bJAB1ntJ1eKCPDXvtJfg', NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29', NULL),
+(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$DcaZZFKg3IHWu5.KwJnJtOw37OwWC2juM2yEch5KXVgSTzr4g2pxC', NULL, NULL, NULL, '4m2p0jLlBqHG57K8mAL9Te0WrVHPR0BPuSFH5JvmtL7KYnNeeWUAo3Cw8imf', NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29', NULL),
 (2, 2, 'usuario normal', 'usuario@usuario.com', 'users/default.png', NULL, '$2y$10$8WyOvplEBm9jUqumjiNT7.JAaX8g.cCreaONYFIKq0i2VuOMLzeim', NULL, NULL, NULL, NULL, '{\"locale\":\"pt_br\"}', '2023-08-06 02:01:49', '2023-08-06 02:01:49', NULL),
 (3, 2, 'ana clara', 'ana@ana.com', 'users/default.png', NULL, '$2y$10$2BQy9BiiCLqVrW8w.Y9t4upcs/uEOVUDHgKgSMzk5gQK7cTxX/Aly', NULL, NULL, NULL, NULL, NULL, '2023-08-06 02:07:13', '2023-08-06 02:07:13', NULL),
 (4, NULL, 'Gestor', 'gestor@gestor.com', 'users/default.png', NULL, '$2y$10$D6gPYIGEdBy0ggjWd7yTu.IwEMTIM9Wqnw28/vxylq2d20zGA.H7K', NULL, NULL, NULL, NULL, '{\"locale\":\"al\"}', '2023-09-17 03:36:49', '2023-09-17 03:36:49', NULL);
@@ -1062,7 +1065,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de tabela `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT de tabela `data_types`
@@ -1104,7 +1107,7 @@ ALTER TABLE `leiloes`
 -- AUTO_INCREMENT de tabela `materiais`
 --
 ALTER TABLE `materiais`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `menus`
@@ -1170,7 +1173,7 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restrições para despejos de tabelas
