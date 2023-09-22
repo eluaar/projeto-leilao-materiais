@@ -4,8 +4,10 @@
 
 <h1 class="text-center">Leilões</h1>
 
+<section class="d-flex justify-content-center flex-nowrap">
 @forelse ($leiloes as $leilao)
-<div class="card" style="width: 18rem;">
+
+<div class="card  mx-3" style="width: 18rem;">
     <img src="{{@asset('assets/images/construcao-civil.jpg')}}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{$leilao->nome}}</h5>
@@ -17,5 +19,6 @@
   @empty
     <p class="alert alert-info">Nenhum leilão disponivel</p>
 @endforelse
+</section>
 
 @endsection

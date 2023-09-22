@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22-Set-2023 às 00:47
+-- Tempo de geração: 22-Set-2023 às 17:17
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.1
 
@@ -871,7 +871,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `settings`, `created_at`, `updated_at`, `empresa_id`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$DcaZZFKg3IHWu5.KwJnJtOw37OwWC2juM2yEch5KXVgSTzr4g2pxC', NULL, NULL, NULL, '4m2p0jLlBqHG57K8mAL9Te0WrVHPR0BPuSFH5JvmtL7KYnNeeWUAo3Cw8imf', NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29', NULL),
+(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$DcaZZFKg3IHWu5.KwJnJtOw37OwWC2juM2yEch5KXVgSTzr4g2pxC', NULL, NULL, NULL, 'OTHdArOTv91mAu12y8f5DjaN82HJ7ri1VueQqyZohfd1kSecj7RVCwhqzANQ', NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29', NULL),
 (2, 2, 'usuario normal', 'usuario@usuario.com', 'users/default.png', NULL, '$2y$10$8WyOvplEBm9jUqumjiNT7.JAaX8g.cCreaONYFIKq0i2VuOMLzeim', NULL, NULL, NULL, NULL, '{\"locale\":\"pt_br\"}', '2023-08-06 02:01:49', '2023-08-06 02:01:49', NULL),
 (3, 2, 'ana clara', 'ana@ana.com', 'users/default.png', NULL, '$2y$10$2BQy9BiiCLqVrW8w.Y9t4upcs/uEOVUDHgKgSMzk5gQK7cTxX/Aly', NULL, NULL, NULL, NULL, NULL, '2023-08-06 02:07:13', '2023-08-06 02:07:13', NULL),
 (4, NULL, 'Gestor', 'gestor@gestor.com', 'users/default.png', NULL, '$2y$10$D6gPYIGEdBy0ggjWd7yTu.IwEMTIM9Wqnw28/vxylq2d20zGA.H7K', NULL, NULL, NULL, NULL, '{\"locale\":\"al\"}', '2023-09-17 03:36:49', '2023-09-17 03:36:49', NULL);
