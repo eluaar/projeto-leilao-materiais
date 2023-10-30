@@ -58,60 +58,55 @@
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Funcionamento do leilão</h2>
-            <h3 class="section-subheading text-muted">Pode ser usada em eventos sequenciais</h3>
+            <h3 class="section-subheading text-muted"></h3>
         </div>
         <ul class="timeline">
             <li>
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="/assets/images/exemplos/1.jpg" alt="..." /></div>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="" alt="1°" /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h4>2009-2011</h4>
-                        <h4 class="subheading">Our Humble Beginnings</h4>
+                        <h4 class="subheading">Autocadastro</h4>
                     </div>
-                    <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                    <div class="timeline-body"><p class="text-muted">O primeiro passo a ser seguido é o autocadastro.<br> Você deverá preencher os campos com seu nome e sobrenome, email, senha e confirma-lá.</p></div>
                 </div>
             </li>
             <li class="timeline-inverted">
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/images/exemplos/2.jpg" alt="..." /></div>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="" alt="2°" /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h4>March 2011</h4>
-                        <h4 class="subheading">An Agency is Born</h4>
+                        <h4 class="subheading">Criar leilão</h4>
                     </div>
-                    <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                    <div class="timeline-body"><p class="text-muted">Para criar um leilão basta você estar cadastrado como usuário.<br> Ir no menu dashboard, leilão e listar os itens que necessita. Se for de seu interesse, colocar valor minímo ou estabelecer data limite.</p></div>
                 </div>
             </li>
             <li>
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/images/exemplos/3.jpg" alt="..." /></div>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="" alt="3°" /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h4>December 2015</h4>
-                        <h4 class="subheading">Transition to Full Service</h4>
+                        <h4 class="subheading">Dar lance</h4>
                     </div>
-                    <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                    <div class="timeline-body"><p class="text-muted">Para dar lance em um leilão você deverá estar cadastrado como usuário.<br> Ir no menu leilão, clicar no botão "Dar lance" e efetuar seu lance.</p></div>
                 </div>
             </li>
             <li class="timeline-inverted">
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/images/exemplos/4.jpg" alt="..." /></div>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="" alt="4°" /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h4>July 2020</h4>
-                        <h4 class="subheading">Phase Two Expansion</h4>
+                        <h4 class="subheading">Finalizar leilão</h4>
                     </div>
-                    <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                    <div class="timeline-body"><p class="text-muted">Para finalizar seu leilão você deverá estar cadastrado como usuário.<br> Caso você tenha escolhido um leilão com valor minímo e ele não ter recebido nenhum lance, poderá ser encerrado quando clicar no botão "Encerrar leilão". <br> Se tiver escolhido o leilão sem valor minímo com data limite, precisará esperar pela data-fim ou então clicar no botão "Encerrar leilão".</p></div>
                 </div>
             </li>
-            <li class="timeline-inverted">
-                <div class="timeline-image">
-                    <h4>
-                        Be Part
-                        <br />
-                        Of Our
-                        <br />
-                        Story!
-                    </h4>
+            <li>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="" alt="5°" /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="subheading">Entrega e acompanhamento</h4>
+                    </div>
+                    <div class="timeline-body"><p class="text-muted">O gestor é responsável por acompanhar as entregas dos materiais.</p></div>
                 </div>
             </li>
+
         </ul>
     </div>
 </section>
@@ -161,7 +156,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
+            <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Nossa equipe é composta por quatro membros.<br> Profissionais responsáveis pela criação e desenvolvimento do sistema Web Leilão. <br> Esse sistema foi planejado e desenvolvido nos anos de 2022 e 2023 pela equipe, com o intuito de facilitar cada vez mais a vida das pessoas que precisam vender ou comprar materiais de construção. <br> Nós agredecemos a todos os usuários do sistema.</p></div>
         </div>
     </div>
 </section>
@@ -169,8 +164,9 @@
 <section class="page-section" id="mapa">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Contate Nos</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h2 class="section-heading text-uppercase">Contate-nos</h2>
+            <h3 class="section-subheading text-muted">Algo deu errado? Nos informe. <br>
+                Nos envie seu feedback!</h3>
         </div>
         <!-- * * * * * * * * * * * * * * *-->
         <!-- * * SB Forms mapa Form * *-->
@@ -184,26 +180,26 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <!-- Name input-->
-                        <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
-                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                        <input class="form-control" id="name" type="text" placeholder="Nome" data-sb-validations="required" />
+                        <div class="invalid-feedback" data-sb-feedback="name:required">É necessário um nome.</div>
                     </div>
                     <div class="form-group">
                         <!-- Email address input-->
-                        <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
-                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                        <input class="form-control" id="email" type="email" placeholder="Email" data-sb-validations="required,email" />
+                        <div class="invalid-feedback" data-sb-feedback="email:required">É necessário um e-mail.</div>
+                        <div class="invalid-feedback" data-sb-feedback="email:email">E-mail inválido.</div>
                     </div>
                     <div class="form-group mb-md-0">
                         <!-- Phone number input-->
-                        <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
-                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                        <input class="form-control" id="phone" type="tel" placeholder="Telefone" data-sb-validations="required" />
+                        <div class="invalid-feedback" data-sb-feedback="phone:required">É necessário um número de telefone.</div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group form-group-textarea mb-md-0">
                         <!-- Message input-->
-                        <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
-                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                        <textarea class="form-control" id="message" placeholder="Deixe uma mensagem" data-sb-validations="required"></textarea>
+                        <div class="invalid-feedback" data-sb-feedback="message:required"></div>
                     </div>
                 </div>
             </div>
@@ -223,9 +219,9 @@
             <!---->
             <!-- This is what your users will see when there is-->
             <!-- an error submitting the form-->
-            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Erro ao enviar mensagem!</div></div>
             <!-- Submit Button-->
-            <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send Message</button></div>
+            <div class="text-center"><button class="btn btn-dark btn-xl text-uppercase disabled" id="submitButton" type="submit">Enviar mensagem</button></div>
         </form>
     </div>
 </section>

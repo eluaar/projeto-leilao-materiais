@@ -20,6 +20,18 @@ class Material extends Model
         return parent::save();
     }
 
+      /**
+     * escopo da query para só incluir materiais do usuario logado.
+     */
+    public function scopeUsuario(Builder $query)
+    {
+        $user = Auth::user();
+        if ($user->hasRole('admin')) {
+            return $query;
+        }
+        return $query->where('user_id', $user->getKey());
+    }
+
     /**
      * Relacionamento pertence a (Muitos para Um)
      * usando Laravel

@@ -12,9 +12,7 @@
     @endif
 @else
 <li class="nav-item"><a class="nav-link" href="{{route('leiloes.index')}}">Leilões</a></li>
-<li class="nav-item"><a class="nav-link" href="{{route('materiais.index')}}">Materiais</a></li>
-<li class="nav-item"><a class="nav-link" href="{{route('empresas.index')}}">Empresas</a></li>
-<li class="nav-item"><a class="nav-link" href="{{route('lances.index')}}">Lances</a></li>
+
     <li class="nav-item dropdown">
         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false" v-pre>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22-Set-2023 às 17:17
+-- Tempo de geração: 30-Out-2023 às 20:33
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.1
 
@@ -171,7 +171,8 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (105, 12, 'prazo_entrega', 'text', 'Prazo Entrega', 0, 1, 1, 1, 1, 1, '{}', 7),
 (106, 12, 'item_leilao_id', 'text', 'Item Leilao Id', 0, 1, 1, 1, 1, 1, '{}', 8),
 (107, 9, 'materiai_belongsto_user_relationship', 'relationship', 'Comprador', 0, 1, 1, 0, 0, 1, '{\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"comprador_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7),
-(108, 9, 'comprador_id', 'text', 'Comprador Id', 0, 0, 0, 0, 0, 0, '{}', 7);
+(108, 9, 'comprador_id', 'text', 'Comprador Id', 0, 0, 0, 0, 0, 0, '{}', 7),
+(109, 7, 'representante_id', 'text', 'Representante Id', 0, 1, 1, 1, 1, 1, '{}', 6);
 
 -- --------------------------------------------------------
 
@@ -208,8 +209,8 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, '', '', 1, 0, NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29'),
 (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29'),
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29'),
-(7, 'empresas', 'empresas', 'Empresa', 'Empresas', 'voyager-company', 'App\\Models\\Empresa', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2022-12-08 19:34:58', '2022-12-08 19:34:58'),
-(9, 'materiais', 'materiais', 'Material', 'Materiais', 'voyager-treasure-open', 'App\\Models\\Material', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-08 19:37:17', '2023-09-22 02:20:36'),
+(7, 'empresas', 'empresas', 'Empresa', 'Empresas', 'voyager-company', 'App\\Models\\Empresa', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":\"usuario\"}', '2022-12-08 19:34:58', '2023-10-01 03:54:16'),
+(9, 'materiais', 'materiais', 'Material', 'Materiais', 'voyager-treasure-open', 'App\\Models\\Material', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":\"usuario\"}', '2022-12-08 19:37:17', '2023-10-01 03:54:35'),
 (11, 'leiloes', 'leiloes', 'Leilão', 'Leilões', 'voyager-data', 'App\\Models\\Leilao', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-08 19:40:53', '2023-08-11 03:39:58'),
 (12, 'lances', 'lances', 'Lance', 'Lances', 'voyager-hammer', 'App\\Models\\Lance', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-21 03:09:29', '2023-08-27 04:36:37'),
 (13, 'item_leilao', 'item-leilao', 'Item Leilao', 'Item Leilaos', 'voyager-hammer', 'App\\Models\\ItemLeilao', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-21 03:14:27', '2023-08-27 04:40:27');
@@ -225,16 +226,17 @@ CREATE TABLE `empresas` (
   `nome` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `cnpj` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `representante_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `empresas`
 --
 
-INSERT INTO `empresas` (`id`, `nome`, `cnpj`, `created_at`, `updated_at`) VALUES
-(1, 'Baratão', '0000000000', '2023-08-04 20:19:14', '2023-08-04 20:19:14'),
-(2, 'Marsura', '0000000000', '2023-08-04 20:24:31', '2023-08-04 20:24:31');
+INSERT INTO `empresas` (`id`, `nome`, `cnpj`, `created_at`, `updated_at`, `representante_id`) VALUES
+(1, 'Baratão', '0000000000', '2023-08-04 20:19:14', '2023-08-04 20:19:14', NULL),
+(2, 'Marsura', '0000000000', '2023-08-04 20:24:31', '2023-08-04 20:24:31', NULL);
 
 -- --------------------------------------------------------
 
@@ -605,6 +607,7 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (4, 1),
 (5, 1),
 (6, 1),
+(6, 2),
 (7, 1),
 (8, 1),
 (9, 1),
@@ -642,19 +645,26 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (39, 1),
 (40, 1),
 (41, 1),
+(41, 2),
 (41, 3),
 (42, 1),
+(42, 2),
 (42, 3),
 (43, 1),
+(43, 2),
 (44, 1),
+(44, 2),
 (45, 1),
 (46, 1),
 (46, 2),
 (46, 3),
 (47, 1),
+(47, 2),
 (47, 3),
 (48, 1),
+(48, 2),
 (49, 1),
+(49, 2),
 (50, 1),
 (51, 1),
 (51, 2),
@@ -663,7 +673,9 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (52, 2),
 (52, 3),
 (53, 1),
+(53, 2),
 (54, 1),
+(54, 2),
 (55, 1),
 (56, 1),
 (56, 3),
@@ -871,10 +883,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `settings`, `created_at`, `updated_at`, `empresa_id`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$DcaZZFKg3IHWu5.KwJnJtOw37OwWC2juM2yEch5KXVgSTzr4g2pxC', NULL, NULL, NULL, 'OTHdArOTv91mAu12y8f5DjaN82HJ7ri1VueQqyZohfd1kSecj7RVCwhqzANQ', NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29', NULL),
+(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$DcaZZFKg3IHWu5.KwJnJtOw37OwWC2juM2yEch5KXVgSTzr4g2pxC', NULL, NULL, NULL, 'HvH1RoCPIlzAdlswx7AJWzplMkfr7sKQdkZra5MZLvc2FBcdnkwnNrhxkrU1', NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29', NULL),
 (2, 2, 'usuario normal', 'usuario@usuario.com', 'users/default.png', NULL, '$2y$10$8WyOvplEBm9jUqumjiNT7.JAaX8g.cCreaONYFIKq0i2VuOMLzeim', NULL, NULL, NULL, NULL, '{\"locale\":\"pt_br\"}', '2023-08-06 02:01:49', '2023-08-06 02:01:49', NULL),
 (3, 2, 'ana clara', 'ana@ana.com', 'users/default.png', NULL, '$2y$10$2BQy9BiiCLqVrW8w.Y9t4upcs/uEOVUDHgKgSMzk5gQK7cTxX/Aly', NULL, NULL, NULL, NULL, NULL, '2023-08-06 02:07:13', '2023-08-06 02:07:13', NULL),
-(4, NULL, 'Gestor', 'gestor@gestor.com', 'users/default.png', NULL, '$2y$10$D6gPYIGEdBy0ggjWd7yTu.IwEMTIM9Wqnw28/vxylq2d20zGA.H7K', NULL, NULL, NULL, NULL, '{\"locale\":\"al\"}', '2023-09-17 03:36:49', '2023-09-17 03:36:49', NULL);
+(4, NULL, 'Gestor', 'gestor@gestor.com', 'users/default.png', NULL, '$2y$10$D6gPYIGEdBy0ggjWd7yTu.IwEMTIM9Wqnw28/vxylq2d20zGA.H7K', NULL, NULL, NULL, NULL, '{\"locale\":\"al\"}', '2023-09-17 03:36:49', '2023-09-17 03:36:49', NULL),
+(6, 2, 'Erica Torres', 'erica123@gmail.com', 'users/default.png', NULL, '$2y$10$TK8KVG790oXzUvkcJya/quIaziiFEdRoHM4/GHfPqJi5dUWpujxaG', NULL, NULL, NULL, NULL, NULL, '2023-10-01 01:55:33', '2023-10-01 01:55:34', NULL),
+(7, 2, 'fornecedor', 'fornecedor@123.com', 'users/default.png', NULL, '$2y$10$3Ju1wLV/Fs5RKm0bit61W.wiseKJ56wLxJUh1g3PsuYuyDxTp5JTO', NULL, NULL, NULL, NULL, NULL, '2023-10-01 02:01:41', '2023-10-01 02:01:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -1065,7 +1079,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de tabela `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT de tabela `data_types`
@@ -1173,7 +1187,7 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restrições para despejos de tabelas
