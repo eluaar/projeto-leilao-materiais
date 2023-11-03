@@ -57,8 +57,8 @@
                         </a>
                     </div>
                     <div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                        <a class="link-dark text-decoration-none me-3" href="#!">Política de privacidade</a>
+                        <a class="link-dark text-decoration-none" href="#!">Termos de uso</a>
                     </div>
                 </div>
             </div>
