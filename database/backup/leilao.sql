@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Nov-2023 às 02:06
+-- Tempo de geração: 05-Nov-2023 às 00:31
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.1
 
@@ -44,6 +44,19 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 (1, NULL, 1, 'Category 1', 'category-1', '2022-12-08 19:14:29', '2022-12-08 19:14:29'),
 (2, NULL, 1, 'Category 2', 'category-2', '2022-12-08 19:14:29', '2022-12-08 19:14:29');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `compras`
+--
+
+CREATE TABLE `compras` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `descricao` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -266,8 +279,17 @@ CREATE TABLE `item_leilao` (
   `material_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `quantidade` float DEFAULT NULL
+  `quantidade` float DEFAULT NULL,
+  `valor_maximo` float DEFAULT NULL,
+  `vendido` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `item_leilao`
+--
+
+INSERT INTO `item_leilao` (`id`, `leilao_id`, `material_id`, `created_at`, `updated_at`, `quantidade`, `valor_maximo`, `vendido`) VALUES
+(1, 2, 2, '2023-11-05 01:50:40', '2023-11-05 01:50:40', 200, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -278,11 +300,11 @@ CREATE TABLE `item_leilao` (
 CREATE TABLE `lances` (
   `id` int(10) UNSIGNED NOT NULL,
   `valor` float NOT NULL,
-  `descricao` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `observacao` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `fornecedor_id` int(11) DEFAULT NULL,
-  `prazo_entrega` date DEFAULT NULL,
+  `prazo_entrega` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `item_leilao_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -290,8 +312,9 @@ CREATE TABLE `lances` (
 -- Extraindo dados da tabela `lances`
 --
 
-INSERT INTO `lances` (`id`, `valor`, `descricao`, `created_at`, `updated_at`, `fornecedor_id`, `prazo_entrega`, `item_leilao_id`) VALUES
-(1, 0, '<p>100 tijolos por R$ 100,OO</p>\r\n<p>cada cimento por R$ 43,00</p>', '2023-08-06 00:59:20', '2023-08-06 00:59:20', NULL, NULL, NULL);
+INSERT INTO `lances` (`id`, `valor`, `observacao`, `created_at`, `updated_at`, `fornecedor_id`, `prazo_entrega`, `item_leilao_id`) VALUES
+(2, 100, NULL, '2023-11-05 02:56:52', '2023-11-05 02:56:52', 1, '10 dias', '1'),
+(3, 100, NULL, '2023-11-05 02:58:23', '2023-11-05 02:58:23', 1, '10 dias', '1');
 
 -- --------------------------------------------------------
 
@@ -306,15 +329,17 @@ CREATE TABLE `leiloes` (
   `nome` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `descricao` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `status` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `leiloes`
 --
 
-INSERT INTO `leiloes` (`id`, `data_limite`, `comprador_id`, `nome`, `descricao`, `created_at`, `updated_at`) VALUES
-(1, '2023-08-03 00:00:00', 3, 'leilao materiais', '<p>preciso de 100 tijolos&nbsp;</p>', '2023-08-04 04:52:46', '2023-09-22 02:46:31');
+INSERT INTO `leiloes` (`id`, `data_limite`, `comprador_id`, `nome`, `descricao`, `created_at`, `updated_at`, `status`) VALUES
+(1, '2023-08-03 00:00:00', 3, 'construção casa Ana', '<p>preciso de 100 tijolos&nbsp;</p>', '2023-08-04 04:52:46', '2023-11-05 01:48:45', NULL),
+(2, '2023-11-06 00:00:00', 1, 'leilão 2', '<p>Estou precisando de 200 sacos de cimento</p>\r\n<p>2000 tijolos e 1500 pisos&nbsp;</p>', '2023-11-04 22:51:14', '2023-11-05 01:49:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -901,6 +926,19 @@ CREATE TABLE `user_roles` (
   `role_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `vendas`
+--
+
+CREATE TABLE `vendas` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `descricao` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- Índices para tabelas despejadas
 --
@@ -912,6 +950,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `categories_slug_unique` (`slug`),
   ADD KEY `categories_parent_id_foreign` (`parent_id`);
+
+--
+-- Índices para tabela `compras`
+--
+ALTER TABLE `compras`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `data_rows`
@@ -1066,6 +1110,12 @@ ALTER TABLE `user_roles`
   ADD KEY `user_roles_role_id_index` (`role_id`);
 
 --
+-- Índices para tabela `vendas`
+--
+ALTER TABLE `vendas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de tabelas despejadas
 --
 
@@ -1074,6 +1124,12 @@ ALTER TABLE `user_roles`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `compras`
+--
+ALTER TABLE `compras`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `data_rows`
@@ -1103,19 +1159,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de tabela `item_leilao`
 --
 ALTER TABLE `item_leilao`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `lances`
 --
 ALTER TABLE `lances`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `leiloes`
 --
 ALTER TABLE `leiloes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `materiais`
@@ -1188,6 +1244,12 @@ ALTER TABLE `translations`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de tabela `vendas`
+--
+ALTER TABLE `vendas`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para despejos de tabelas

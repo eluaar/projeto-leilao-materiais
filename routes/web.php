@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,10 +54,37 @@ Route::get('/lances', function () {
     return view('lances.index', compact('lances'));
 })->name('lances.index');
 
-Route::get('/lances/{id}', function ($id) {
-    $lance = App\Models\Lance::find($id);
-    return view('lances.show', compact('lance'));
-})->name('lances.show');
+Route::post('/lances', function (Request $request) {
+   // $lance = App\Models\Lance::find($id);
+   $lance = new App\Models\Lance();
+   $lance->valor = $request->valor;
+   $lance->prazo_entrega = $request->prazo_de_entrega;
+   $lance->observacao = $request->observacao;
+   $lance->item_leilao_id = $request->item_id;
+   $lance->fornecedor_id = Auth::user()->id;
+   $lance->save();
+   return redirect()->route('lances.index');
+})->name('lances');
+
+Route::get('/vendas', function () {
+    $vendas = App\Models\Venda::all();
+    return view('vendas.index', compact('vendas'));
+})->name('vendas.index');
+
+Route::get('/vendas/{id}', function ($id) {
+    $venda = App\Models\Venda::find($id);
+    return view('vendas.show', compact('venda'));
+})->name('vendas.show');
+
+Route::get('/compras', function () {
+    $compras = App\Models\Compra::all();
+    return view('compras.index', compact('compras'));
+})->name('compras.index');
+
+Route::get('/compras/{id}', function ($id) {
+    $compra = App\Models\Compra::find($id);
+    return view('compras.show', compact('compra'));
+})->name('compras.show');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
