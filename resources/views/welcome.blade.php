@@ -62,7 +62,7 @@
         </div>
         <ul class="timeline">
             <li>
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="" alt="1°" /></div>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="\assets\images\cadastro.jpeg" alt="" /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
                         <h4 class="subheading">Autocadastro</h4>
@@ -71,7 +71,7 @@
                 </div>
             </li>
             <li class="timeline-inverted">
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="" alt="2°" /></div>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="\assets\images\leilão.jpeg" alt="" /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
                         <h4 class="subheading">Criar leilão</h4>
@@ -80,7 +80,7 @@
                 </div>
             </li>
             <li>
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="" alt="3°" /></div>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="\assets\images\lance.jpeg" alt="" /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
                         <h4 class="subheading">Dar lance</h4>
@@ -89,7 +89,7 @@
                 </div>
             </li>
             <li class="timeline-inverted">
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="" alt="4°" /></div>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="\assets\images\martelo.jpeg" alt="" /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
                         <h4 class="subheading">Finalizar leilão</h4>
@@ -98,7 +98,7 @@
                 </div>
             </li>
             <li>
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="" alt="5°" /></div>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="\assets\images\entrega.jpeg" alt="" /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
                         <h4 class="subheading">Entrega e acompanhamento</h4>
@@ -132,13 +132,13 @@
                     <img class="" src="{{asset('assets/images/ana.jpeg')}}" alt="..." />
                     <h4>Ana Clara Obregon Dias</h4>
                    <!-- <p class="text-muted">Técnica em Informática</p> -->
-                    <a class="btn btn-dark btn-social mx-2 my-3" href="#!" target="_blank"> <i class="fab fa-brands fa-instagram"></i></a>
+                    <a class="btn btn-dark btn-social mx-2 my-3" href="#!" target="_blank"> <i class="fab fa-brands fa-github"></i></a>
                     <a class="btn btn-dark btn-social mx-2 my-3" href="#!" target="_blank"> <i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="team-member">
-                    <img class="" src="{{asset('assets/images/exemplos/3.jpg')}}" alt="..." />
+                    <img class="" src="{{asset('assets/images/erica.jpeg')}}" alt="..." />
                     <h4>Érica Torres</h4>
                   <!--  <p class="text-muted">Técnica em Informática</p>-->
                     <a class="btn btn-dark btn-social mx-2 my-3" href="https://github.com/eluaar" target="_blank"> <i class="fab fa-brands fa-github"></i></a>
@@ -147,7 +147,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="team-member">
-                    <img class="" src="{{asset('assets/images/exemplos/3.jpg')}}" alt="..." />
+                    <img class="" src="{{asset('assets/images/foto_aurelio.jpeg')}}" alt="..." />
                     <h4>Aurélio Ramos Junior</h4>
                    <!-- <p class="text-muted">Cientista de computação</p>-->
                     <a class="btn btn-dark btn-social mx-2 my-3" href="https://github.com/aurelio-ramos" target="_blank"> <i class="fab fa-brands fa-github"></i></a>
@@ -156,12 +156,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Nossa equipe é composta por quatro membros.<br> Profissionais responsáveis pela criação e desenvolvimento do sistema Web Leilão. <br> Esse sistema foi planejado e desenvolvido nos anos de 2022 e 2023 pela equipe, com o intuito de facilitar cada vez mais a vida das pessoas que precisam vender ou comprar materiais de construção. <br> Nós agredecemos a todos os usuários do sistema.</p></div>
+            <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Nossa equipe é composta por quatro membros.<br> Profissionais responsáveis pela criação e desenvolvimento do sistema Web Leilão. <br> Esse sistema foi planejado e desenvolvido nos anos de 2022 e 2023 pela equipe, com o intuito de facilitar cada vez mais a vida das pessoas que precisam vender ou comprar materiais de construção. <br> Nós agradecemos a todos os usuários do sistema.</p></div>
         </div>
     </div>
 </section>
 <!-- mapa-->
-<section class="page-section" id="mapa">
+<section class="page-section" id="">
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Contate-nos</h2>
@@ -212,7 +212,7 @@
                     <div class="fw-bolder">Form submission successful!</div>
                     To activate this form, sign up at
                     <br />
-                    <a href="https://startbootstrap.com/solution/mapa-forms">https://startbootstrap.com/solution/mapa-forms</a>
+                    <a href="">https://startbootstrap.com/solution/mapa-forms</a>
                 </div>
             </div>
             <!-- Submit error message-->
