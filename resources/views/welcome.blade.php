@@ -38,8 +38,8 @@
                     <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
 
                 </span>
-                <h4 class="my-3">Desing responsivo</h4>
-                <p class="text-muted">Além de um desing responsivo e prático, o sistema busca oferecer comodidade para os usuários.</p>
+                <h4 class="my-3">Design responsivo</h4>
+                <p class="text-muted">Além de um design responsivo e prático, o sistema busca oferecer comodidade para os usuários.</p>
             </div>
             <div class="col-md-4">
                 <span class="fa-stack fa-4x">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10-Nov-2023 às 20:25
+-- Tempo de geração: 18-Nov-2023 às 14:58
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.1
 
@@ -44,19 +44,6 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 (1, NULL, 1, 'Category 1', 'category-1', '2022-12-08 19:14:29', '2022-12-08 19:14:29'),
 (2, NULL, 1, 'Category 2', 'category-2', '2022-12-08 19:14:29', '2022-12-08 19:14:29');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `compras`
---
-
-CREATE TABLE `compras` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `descricao` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -159,7 +146,6 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (75, 11, 'leilo_belongsto_user_relationship', 'relationship', 'Comprador', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"comprador_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
 (76, 12, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (79, 12, 'valor', 'number', 'Valor', 1, 1, 1, 1, 1, 1, '{}', 4),
-(80, 12, 'descricao', 'rich_text_box', 'Descricao', 0, 1, 1, 1, 1, 1, '{}', 5),
 (81, 12, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 6),
 (82, 12, 'updated_at', 'timestamp', 'Updated At', 0, 1, 1, 0, 0, 0, '{}', 7),
 (86, 13, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
@@ -185,7 +171,9 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (106, 12, 'item_leilao_id', 'text', 'Item Leilao Id', 0, 1, 1, 1, 1, 1, '{}', 8),
 (107, 9, 'materiai_belongsto_user_relationship', 'relationship', 'Comprador', 0, 1, 1, 0, 0, 1, '{\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"comprador_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7),
 (108, 9, 'comprador_id', 'text', 'Comprador Id', 0, 0, 0, 0, 0, 0, '{}', 7),
-(109, 7, 'representante_id', 'text', 'Representante Id', 0, 1, 1, 1, 1, 1, '{}', 6);
+(109, 7, 'representante_id', 'text', 'Representante Id', 0, 1, 1, 1, 1, 1, '{}', 6),
+(110, 12, 'observacao', 'text', 'Observacao', 0, 1, 1, 1, 1, 1, '{}', 3),
+(111, 12, 'arrematante', 'checkbox', 'Arrematante', 0, 1, 1, 1, 1, 1, '{\"0\":\"N\\u00e3o arrematado\",\"1\":\"Arrematado\",\"checked\":false}', 9);
 
 -- --------------------------------------------------------
 
@@ -225,7 +213,7 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (7, 'empresas', 'empresas', 'Empresa', 'Empresas', 'voyager-company', 'App\\Models\\Empresa', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":\"usuario\"}', '2022-12-08 19:34:58', '2023-10-01 03:54:16'),
 (9, 'materiais', 'materiais', 'Material', 'Materiais', 'voyager-treasure-open', 'App\\Models\\Material', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":\"usuario\"}', '2022-12-08 19:37:17', '2023-10-01 03:54:35'),
 (11, 'leiloes', 'leiloes', 'Leilão', 'Leilões', 'voyager-data', 'App\\Models\\Leilao', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-08 19:40:53', '2023-08-11 03:39:58'),
-(12, 'lances', 'lances', 'Lance', 'Lances', 'voyager-hammer', 'App\\Models\\Lance', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-21 03:09:29', '2023-08-27 04:36:37'),
+(12, 'lances', 'lances', 'Lance', 'Lances', 'voyager-hammer', 'App\\Models\\Lance', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-21 03:09:29', '2023-11-17 02:50:42'),
 (13, 'item_leilao', 'item-leilao', 'Item Leilao', 'Item Leilaos', 'voyager-hammer', 'App\\Models\\ItemLeilao', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-21 03:14:27', '2023-08-27 04:40:27');
 
 -- --------------------------------------------------------
@@ -305,16 +293,23 @@ CREATE TABLE `lances` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `fornecedor_id` int(11) DEFAULT NULL,
   `prazo_entrega` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `item_leilao_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `item_leilao_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `arrematante` tinyint(4) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `lances`
 --
 
-INSERT INTO `lances` (`id`, `valor`, `observacao`, `created_at`, `updated_at`, `fornecedor_id`, `prazo_entrega`, `item_leilao_id`) VALUES
-(2, 100, NULL, '2023-11-05 02:56:52', '2023-11-05 02:56:52', 1, '10 dias', '1'),
-(3, 100, NULL, '2023-11-05 02:58:23', '2023-11-05 02:58:23', 1, '10 dias', '1');
+INSERT INTO `lances` (`id`, `valor`, `observacao`, `created_at`, `updated_at`, `fornecedor_id`, `prazo_entrega`, `item_leilao_id`, `arrematante`) VALUES
+(2, 100, NULL, '2023-11-05 02:56:52', '2023-11-05 02:56:52', 1, '10 dias', '1', 0),
+(3, 100, NULL, '2023-11-05 02:58:23', '2023-11-17 02:51:03', 1, '10 dias', '1', 1),
+(4, 100, 'lalallalllalla', '2023-11-17 03:43:25', '2023-11-17 03:43:25', 1, '2023-12-15', '1', 0),
+(5, 100, NULL, '2023-11-17 03:49:22', '2023-11-17 03:49:22', 1, '2023-12-11', '1', 0),
+(6, 100, NULL, '2023-11-17 03:50:27', '2023-11-17 03:50:27', 1, '2023-12-11', '1', 0),
+(7, 100, NULL, '2023-11-17 03:50:32', '2023-11-17 03:50:32', 1, '2023-12-11', '1', 0),
+(8, 100, NULL, '2023-11-17 03:51:34', '2023-11-17 03:51:34', 1, '2023-12-11', '1', 0),
+(9, 100, NULL, '2023-11-17 03:51:53', '2023-11-17 03:51:53', 1, '2023-11-16', '1', 0);
 
 -- --------------------------------------------------------
 
@@ -330,16 +325,17 @@ CREATE TABLE `leiloes` (
   `descricao` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `status` int(11) DEFAULT 1
+  `status` int(11) DEFAULT 1,
+  `cep` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `leiloes`
 --
 
-INSERT INTO `leiloes` (`id`, `data_limite`, `comprador_id`, `nome`, `descricao`, `created_at`, `updated_at`, `status`) VALUES
-(1, '2023-08-03 00:00:00', 3, 'construção casa Ana', '<p>preciso de 100 tijolos&nbsp;</p>', '2023-08-04 04:52:46', '2023-11-05 01:48:45', NULL),
-(2, '2023-11-06 00:00:00', 1, 'leilão 2', '<p>Estou precisando de 200 sacos de cimento</p>\r\n<p>2000 tijolos e 1500 pisos&nbsp;</p>', '2023-11-04 22:51:14', '2023-11-05 01:49:21', NULL);
+INSERT INTO `leiloes` (`id`, `data_limite`, `comprador_id`, `nome`, `descricao`, `created_at`, `updated_at`, `status`, `cep`) VALUES
+(1, '2023-08-03 00:00:00', 3, 'construção casa Ana', '<p>preciso de 100 tijolos&nbsp;</p>', '2023-08-04 04:52:46', '2023-11-05 01:48:45', NULL, NULL),
+(2, '2023-11-06 00:00:00', 1, 'leilão 2', '<p>Estou precisando de 200 sacos de cimento</p>\r\n<p>2000 tijolos e 1500 pisos&nbsp;</p>', '2023-11-04 22:51:14', '2023-11-05 01:49:21', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -926,19 +922,6 @@ CREATE TABLE `user_roles` (
   `role_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `vendas`
---
-
-CREATE TABLE `vendas` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `descricao` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Índices para tabelas despejadas
 --
@@ -950,12 +933,6 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `categories_slug_unique` (`slug`),
   ADD KEY `categories_parent_id_foreign` (`parent_id`);
-
---
--- Índices para tabela `compras`
---
-ALTER TABLE `compras`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `data_rows`
@@ -1110,12 +1087,6 @@ ALTER TABLE `user_roles`
   ADD KEY `user_roles_role_id_index` (`role_id`);
 
 --
--- Índices para tabela `vendas`
---
-ALTER TABLE `vendas`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT de tabelas despejadas
 --
 
@@ -1126,16 +1097,10 @@ ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de tabela `compras`
---
-ALTER TABLE `compras`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT de tabela `data_types`
@@ -1165,7 +1130,7 @@ ALTER TABLE `item_leilao`
 -- AUTO_INCREMENT de tabela `lances`
 --
 ALTER TABLE `lances`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `leiloes`
@@ -1244,12 +1209,6 @@ ALTER TABLE `translations`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de tabela `vendas`
---
-ALTER TABLE `vendas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para despejos de tabelas

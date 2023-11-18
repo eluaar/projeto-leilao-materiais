@@ -18,5 +18,10 @@ class ItemLeilao extends Model
     {
         return $this->belongsTo(Leilao::class, 'leilao_id', 'id');
     }
+
+    public function lances()
+    {
+        return $this->hasMany(Lance::class);
+    }
 }
 

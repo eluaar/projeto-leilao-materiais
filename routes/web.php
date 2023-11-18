@@ -29,6 +29,11 @@ Route::get('/leiloes/{id}', function ($id) {
     return view('leiloes.show', compact('leilao'));
 })->name('leiloes.show');
 
+Route::get('/leiloes/efetuar_lance/{id}', function ($id) {
+    $itemLeilao = App\Models\ItemLeilao::find($id);
+    return view('leiloes.efetuar_lance', compact('itemLeilao'));
+})->name('leiloes.efetuar_lance');
+
 Route::get('/empresas', function () {
     $empresas = App\Models\Empresa::all();
     return view('empresas.index', compact('empresas'));
@@ -49,13 +54,12 @@ Route::get('/materiais/{id}', function ($id) {
     return view('materiais.show', compact('material'));
 })->name('materiais.show');
 
-Route::get('/lances', function () {
-    $lances = App\Models\Lance::all();
-    return view('lances.index', compact('lances'));
-})->name('lances.index');
+Route::get('/lances/itemLeilao/{id}', function ($id) {
+    $itemLeilao = App\Models\ItemLeilao::find($id);
+    return view('lances.itemLeilao', compact('itemLeilao'));
+})->name('lances.itemLeilao');
 
 Route::post('/lances', function (Request $request) {
-   // $lance = App\Models\Lance::find($id);
    $lance = new App\Models\Lance();
    $lance->valor = $request->valor;
    $lance->prazo_entrega = $request->prazo_de_entrega;
@@ -63,28 +67,19 @@ Route::post('/lances', function (Request $request) {
    $lance->item_leilao_id = $request->item_id;
    $lance->fornecedor_id = Auth::user()->id;
    $lance->save();
-   return redirect()->route('lances.index');
+   $itemLeilao= App\Models\ItemLeilao::find($request->item_id);
+   return redirect()->route('leiloes.show', ['id' => $itemLeilao->leilao_id]);
 })->name('lances');
 
 Route::get('/vendas', function () {
-    $vendas = App\Models\Venda::all();
-    return view('vendas.index', compact('vendas'));
-})->name('vendas.index');
-
-Route::get('/vendas/{id}', function ($id) {
-    $venda = App\Models\Venda::find($id);
-    return view('vendas.show', compact('venda'));
-})->name('vendas.show');
+    $vendas = App\Models\Lance::where('arrematante', 1)->get();
+    return view('lances.vendas', compact('vendas'));
+})->name('lances.vendas');
 
 Route::get('/compras', function () {
-    $compras = App\Models\Compra::all();
-    return view('compras.index', compact('compras'));
-})->name('compras.index');
-
-Route::get('/compras/{id}', function ($id) {
-    $compra = App\Models\Compra::find($id);
-    return view('compras.show', compact('compra'));
-})->name('compras.show');
+    $compras = App\Models\Lance::where('arrematante', 1)->get();
+    return view('lances.compras', compact('compras'));
+})->name('lances.compras');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
