@@ -14,6 +14,8 @@
       <p class="card-text">{!!$leilao->descricao!!}</p>
       <p>{{$leilao?->comprador?->name}}</p>
       <a href="{{route('leiloes.show', ['id'=>$leilao->id])}}" class="btn btn-dark">Visualizar</a>
+      <nav aria-label="Page navigation example">
+      </nav>
     </div>
   </div>
   @empty

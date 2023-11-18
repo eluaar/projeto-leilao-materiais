@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18-Nov-2023 às 14:58
+-- Tempo de geração: 19-Nov-2023 às 00:30
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.1
 
@@ -263,21 +263,21 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `item_leilao` (
   `id` int(10) UNSIGNED NOT NULL,
-  `leilao_id` int(11) DEFAULT NULL,
-  `material_id` int(11) DEFAULT NULL,
+  `leilao_id` int(11) NOT NULL,
+  `material_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `quantidade` float DEFAULT NULL,
+  `quantidade` float DEFAULT 1,
   `valor_maximo` float DEFAULT NULL,
-  `vendido` int(11) DEFAULT NULL
+  `lance_arrematante_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `item_leilao`
 --
 
-INSERT INTO `item_leilao` (`id`, `leilao_id`, `material_id`, `created_at`, `updated_at`, `quantidade`, `valor_maximo`, `vendido`) VALUES
-(1, 2, 2, '2023-11-05 01:50:40', '2023-11-05 01:50:40', 200, NULL, NULL);
+INSERT INTO `item_leilao` (`id`, `leilao_id`, `material_id`, `created_at`, `updated_at`, `quantidade`, `valor_maximo`, `lance_arrematante_id`) VALUES
+(1, 2, 2, '2023-11-05 01:50:40', '2023-11-19 02:46:36', 200, NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -302,10 +302,10 @@ CREATE TABLE `lances` (
 --
 
 INSERT INTO `lances` (`id`, `valor`, `observacao`, `created_at`, `updated_at`, `fornecedor_id`, `prazo_entrega`, `item_leilao_id`, `arrematante`) VALUES
-(2, 100, NULL, '2023-11-05 02:56:52', '2023-11-05 02:56:52', 1, '10 dias', '1', 0),
+(2, 100, NULL, '2023-11-05 02:56:52', '2023-11-19 02:35:41', 1, '10 dias', '1', 1),
 (3, 100, NULL, '2023-11-05 02:58:23', '2023-11-17 02:51:03', 1, '10 dias', '1', 1),
-(4, 100, 'lalallalllalla', '2023-11-17 03:43:25', '2023-11-17 03:43:25', 1, '2023-12-15', '1', 0),
-(5, 100, NULL, '2023-11-17 03:49:22', '2023-11-17 03:49:22', 1, '2023-12-11', '1', 0),
+(4, 100, 'lalallalllalla', '2023-11-17 03:43:25', '2023-11-19 02:46:36', 1, '2023-12-15', '1', 1),
+(5, 100, NULL, '2023-11-17 03:49:22', '2023-11-19 02:35:58', 1, '2023-12-11', '1', 1),
 (6, 100, NULL, '2023-11-17 03:50:27', '2023-11-17 03:50:27', 1, '2023-12-11', '1', 0),
 (7, 100, NULL, '2023-11-17 03:50:32', '2023-11-17 03:50:32', 1, '2023-12-11', '1', 0),
 (8, 100, NULL, '2023-11-17 03:51:34', '2023-11-17 03:51:34', 1, '2023-12-11', '1', 0),
@@ -904,7 +904,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `settings`, `created_at`, `updated_at`, `empresa_id`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$DcaZZFKg3IHWu5.KwJnJtOw37OwWC2juM2yEch5KXVgSTzr4g2pxC', NULL, NULL, NULL, 'nhCguVSyXekjDqozfCMg6ChDW4TxKcACid3vgLnRZoAv8m5biv1uhrR9RHfY', NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29', NULL),
+(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$DcaZZFKg3IHWu5.KwJnJtOw37OwWC2juM2yEch5KXVgSTzr4g2pxC', NULL, NULL, NULL, 'H4b4MuUlt2ptrLuy5Sv7xmIj9CnNqtfROHbgVjROhliUs1bxIkDZC1IO9jSs', NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29', NULL),
 (2, 2, 'usuario normal', 'usuario@usuario.com', 'users/default.png', NULL, '$2y$10$8WyOvplEBm9jUqumjiNT7.JAaX8g.cCreaONYFIKq0i2VuOMLzeim', NULL, NULL, NULL, NULL, '{\"locale\":\"pt_br\"}', '2023-08-06 02:01:49', '2023-08-06 02:01:49', NULL),
 (3, 2, 'ana clara', 'ana@ana.com', 'users/default.png', NULL, '$2y$10$2BQy9BiiCLqVrW8w.Y9t4upcs/uEOVUDHgKgSMzk5gQK7cTxX/Aly', NULL, NULL, NULL, NULL, NULL, '2023-08-06 02:07:13', '2023-08-06 02:07:13', NULL),
 (4, NULL, 'Gestor', 'gestor@gestor.com', 'users/default.png', NULL, '$2y$10$D6gPYIGEdBy0ggjWd7yTu.IwEMTIM9Wqnw28/vxylq2d20zGA.H7K', NULL, NULL, NULL, NULL, '{\"locale\":\"al\"}', '2023-09-17 03:36:49', '2023-09-17 03:36:49', NULL),

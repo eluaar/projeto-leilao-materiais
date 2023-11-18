@@ -31,7 +31,11 @@ Route::get('/leiloes/{id}', function ($id) {
 
 Route::get('/leiloes/efetuar_lance/{id}', function ($id) {
     $itemLeilao = App\Models\ItemLeilao::find($id);
-    return view('leiloes.efetuar_lance', compact('itemLeilao'));
+    $leilao = App\Models\Leilao::find($itemLeilao->leilao_id);
+    if ($itemLeilao->lance_arrematante_id == null and $leilao->comprador_id != Auth::user()->id){
+        return view('leiloes.efetuar_lance', compact('itemLeilao'));
+    }
+    return redirect()->route('leiloes.show', ['id' => $itemLeilao->leilao_id]);
 })->name('leiloes.efetuar_lance');
 
 Route::get('/empresas', function () {
@@ -56,8 +60,24 @@ Route::get('/materiais/{id}', function ($id) {
 
 Route::get('/lances/itemLeilao/{id}', function ($id) {
     $itemLeilao = App\Models\ItemLeilao::find($id);
-    return view('lances.itemLeilao', compact('itemLeilao'));
+    $leilao = App\Models\Leilao::find($itemLeilao->leilao_id);
+    if ($leilao->comprador_id == Auth::user()->id){
+        return view('lances.itemLeilao', compact('itemLeilao'));
+    }
+    return redirect()->route('leiloes.show', ['id' => $itemLeilao->leilao_id]);
 })->name('lances.itemLeilao');
+
+Route::get('/lances/itemLeilao/aceitar/{id}', function ($id) {
+    $lance = App\Models\Lance::find($id);
+    $itemLeilao= App\Models\ItemLeilao::find($lance->item_leilao_id);
+    if($itemLeilao->lance_arrematante_id == null) {
+        $lance->arrematante = true;
+        $lance->save();
+        $itemLeilao->lance_arrematante_id = $lance->id;
+        $itemLeilao->save();
+    }
+    return redirect()->route('leiloes.show', ['id' => $lance->itemLeilao->leilao_id]);
+})->name('lances.aceitar');
 
 Route::post('/lances', function (Request $request) {
    $lance = new App\Models\Lance();
@@ -72,12 +92,18 @@ Route::post('/lances', function (Request $request) {
 })->name('lances');
 
 Route::get('/vendas', function () {
-    $vendas = App\Models\Lance::where('arrematante', 1)->get();
+    $vendas = App\Models\Lance::where('arrematante', 1)->where('fornecedor_id', Auth::user()->id)->get();
     return view('lances.vendas', compact('vendas'));
 })->name('lances.vendas');
 
 Route::get('/compras', function () {
-    $compras = App\Models\Lance::where('arrematante', 1)->get();
+    $userId = Auth::id();
+    $compras = App\Models\Lance::where('arrematante', 1)
+    ->whereHas('itemLeilao.leilao', function ($query) use ($userId) {
+        $query->where('comprador_id', $userId);
+    })
+    ->get();
+
     return view('lances.compras', compact('compras'));
 })->name('lances.compras');
 
