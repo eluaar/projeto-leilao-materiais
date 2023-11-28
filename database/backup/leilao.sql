@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Nov-2023 às 00:30
+-- Tempo de geração: 28-Nov-2023 às 01:02
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.1
 
@@ -149,12 +149,12 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (81, 12, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 6),
 (82, 12, 'updated_at', 'timestamp', 'Updated At', 0, 1, 1, 0, 0, 0, '{}', 7),
 (86, 13, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(87, 13, 'leilao_id', 'text', 'Leilao Id', 0, 0, 0, 0, 0, 0, '{}', 2),
-(88, 13, 'material_id', 'text', 'Material Id', 0, 0, 0, 0, 0, 0, '{}', 3),
+(87, 13, 'leilao_id', 'text', 'Leilao Id', 1, 0, 0, 0, 0, 0, '{}', 2),
+(88, 13, 'material_id', 'text', 'Material Id', 1, 0, 0, 0, 0, 0, '{}', 3),
 (89, 13, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 4),
 (90, 13, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
 (91, 13, 'quantidade', 'text', 'Quantidade', 0, 1, 1, 1, 1, 1, '{}', 6),
-(92, 13, 'item_leilao_belongsto_leilo_relationship', 'relationship', 'leilão', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Leilao\",\"table\":\"leiloes\",\"type\":\"belongsTo\",\"column\":\"leilao_id\",\"key\":\"id\",\"label\":\"nome\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7),
+(92, 13, 'item_leilao_belongsto_leilo_relationship', 'relationship', 'leilão', 0, 1, 1, 1, 1, 1, '{\"scope\":\"usuario\",\"model\":\"App\\\\Models\\\\Leilao\",\"table\":\"leiloes\",\"type\":\"belongsTo\",\"column\":\"leilao_id\",\"key\":\"id\",\"label\":\"nome\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7),
 (93, 13, 'item_leilao_belongsto_materiai_relationship', 'relationship', 'material', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Material\",\"table\":\"materiais\",\"type\":\"belongsTo\",\"column\":\"material_id\",\"key\":\"id\",\"label\":\"nome\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 8),
 (94, 9, 'foto', 'image', 'Foto', 0, 1, 1, 1, 1, 1, '{}', 6),
 (95, 11, 'comprador_id', 'text', 'Comprador Id', 0, 0, 0, 0, 0, 0, '{}', 3),
@@ -173,7 +173,11 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (108, 9, 'comprador_id', 'text', 'Comprador Id', 0, 0, 0, 0, 0, 0, '{}', 7),
 (109, 7, 'representante_id', 'text', 'Representante Id', 0, 1, 1, 1, 1, 1, '{}', 6),
 (110, 12, 'observacao', 'text', 'Observacao', 0, 1, 1, 1, 1, 1, '{}', 3),
-(111, 12, 'arrematante', 'checkbox', 'Arrematante', 0, 1, 1, 1, 1, 1, '{\"0\":\"N\\u00e3o arrematado\",\"1\":\"Arrematado\",\"checked\":false}', 9);
+(111, 12, 'arrematante', 'checkbox', 'Arrematante', 0, 1, 1, 1, 1, 1, '{\"0\":\"N\\u00e3o arrematado\",\"1\":\"Arrematado\",\"checked\":false}', 9),
+(112, 13, 'valor_maximo', 'text', 'Valor Maximo', 0, 1, 1, 1, 1, 1, '{}', 7),
+(113, 13, 'lance_arrematante_id', 'text', 'Lance Arrematante Id', 0, 0, 0, 0, 0, 0, '{}', 8),
+(114, 11, 'status', 'text', 'Status', 0, 1, 1, 1, 1, 1, '{}', 8),
+(115, 11, 'cep', 'text', 'Cep', 0, 1, 1, 1, 1, 1, '{}', 9);
 
 -- --------------------------------------------------------
 
@@ -211,10 +215,10 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29'),
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29'),
 (7, 'empresas', 'empresas', 'Empresa', 'Empresas', 'voyager-company', 'App\\Models\\Empresa', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":\"usuario\"}', '2022-12-08 19:34:58', '2023-10-01 03:54:16'),
-(9, 'materiais', 'materiais', 'Material', 'Materiais', 'voyager-treasure-open', 'App\\Models\\Material', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":\"usuario\"}', '2022-12-08 19:37:17', '2023-10-01 03:54:35'),
-(11, 'leiloes', 'leiloes', 'Leilão', 'Leilões', 'voyager-data', 'App\\Models\\Leilao', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-08 19:40:53', '2023-08-11 03:39:58'),
+(9, 'materiais', 'materiais', 'Material', 'Materiais', 'voyager-treasure-open', 'App\\Models\\Material', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":\"usuario\"}', '2022-12-08 19:37:17', '2023-11-28 02:31:27'),
+(11, 'leiloes', 'leiloes', 'Leilão', 'Leilões', 'voyager-data', 'App\\Models\\Leilao', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":\"usuario\"}', '2022-12-08 19:40:53', '2023-11-28 02:54:27'),
 (12, 'lances', 'lances', 'Lance', 'Lances', 'voyager-hammer', 'App\\Models\\Lance', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-21 03:09:29', '2023-11-17 02:50:42'),
-(13, 'item_leilao', 'item-leilao', 'Item Leilao', 'Item Leilaos', 'voyager-hammer', 'App\\Models\\ItemLeilao', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2022-12-21 03:14:27', '2023-08-27 04:40:27');
+(13, 'item_leilao', 'item-leilao', 'Item do Leilão', 'Itens do leilão', 'voyager-hammer', 'App\\Models\\ItemLeilao', NULL, 'App\\Http\\Controllers\\VoyagerController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":\"usuario\"}', '2022-12-21 03:14:27', '2023-11-28 02:56:32');
 
 -- --------------------------------------------------------
 
@@ -277,7 +281,10 @@ CREATE TABLE `item_leilao` (
 --
 
 INSERT INTO `item_leilao` (`id`, `leilao_id`, `material_id`, `created_at`, `updated_at`, `quantidade`, `valor_maximo`, `lance_arrematante_id`) VALUES
-(1, 2, 2, '2023-11-05 01:50:40', '2023-11-19 02:46:36', 200, NULL, 4);
+(1, 2, 2, '2023-11-05 01:50:40', '2023-11-19 02:46:36', 200, NULL, 4),
+(2, 5, 4, '2023-11-28 02:49:22', '2023-11-28 02:49:22', 25, NULL, NULL),
+(3, 2, 1, '2023-11-28 03:14:18', '2023-11-28 03:14:18', 2000, NULL, NULL),
+(4, 2, 5, '2023-11-28 03:15:10', '2023-11-28 03:15:10', 1500, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -302,14 +309,12 @@ CREATE TABLE `lances` (
 --
 
 INSERT INTO `lances` (`id`, `valor`, `observacao`, `created_at`, `updated_at`, `fornecedor_id`, `prazo_entrega`, `item_leilao_id`, `arrematante`) VALUES
-(2, 100, NULL, '2023-11-05 02:56:52', '2023-11-19 02:35:41', 1, '10 dias', '1', 1),
-(3, 100, NULL, '2023-11-05 02:58:23', '2023-11-17 02:51:03', 1, '10 dias', '1', 1),
-(4, 100, 'lalallalllalla', '2023-11-17 03:43:25', '2023-11-19 02:46:36', 1, '2023-12-15', '1', 1),
-(5, 100, NULL, '2023-11-17 03:49:22', '2023-11-19 02:35:58', 1, '2023-12-11', '1', 1),
-(6, 100, NULL, '2023-11-17 03:50:27', '2023-11-17 03:50:27', 1, '2023-12-11', '1', 0),
-(7, 100, NULL, '2023-11-17 03:50:32', '2023-11-17 03:50:32', 1, '2023-12-11', '1', 0),
-(8, 100, NULL, '2023-11-17 03:51:34', '2023-11-17 03:51:34', 1, '2023-12-11', '1', 0),
-(9, 100, NULL, '2023-11-17 03:51:53', '2023-11-17 03:51:53', 1, '2023-11-16', '1', 0);
+(2, 100, NULL, '2023-11-05 02:56:52', '2023-11-26 23:32:33', 7, '10 dias', '1', 1),
+(5, 100, NULL, '2023-11-17 03:49:22', '2023-11-26 23:33:39', 7, '2023-12-11', '1', 1),
+(7, 100, NULL, '2023-11-17 03:50:32', '2023-11-26 23:32:45', 2, '2023-12-11', '1', 0),
+(8, 100, NULL, '2023-11-17 03:51:34', '2023-11-26 23:32:59', 3, '2023-12-11', '1', 0),
+(9, 100, NULL, '2023-11-17 03:51:53', '2023-11-26 23:33:09', 6, '2023-11-16', '1', 0),
+(10, 150, NULL, '2023-11-28 02:58:59', '2023-11-28 02:58:59', 1, '2024-01-10', '2', 0);
 
 -- --------------------------------------------------------
 
@@ -334,8 +339,9 @@ CREATE TABLE `leiloes` (
 --
 
 INSERT INTO `leiloes` (`id`, `data_limite`, `comprador_id`, `nome`, `descricao`, `created_at`, `updated_at`, `status`, `cep`) VALUES
-(1, '2023-08-03 00:00:00', 3, 'construção casa Ana', '<p>preciso de 100 tijolos&nbsp;</p>', '2023-08-04 04:52:46', '2023-11-05 01:48:45', NULL, NULL),
-(2, '2023-11-06 00:00:00', 1, 'leilão 2', '<p>Estou precisando de 200 sacos de cimento</p>\r\n<p>2000 tijolos e 1500 pisos&nbsp;</p>', '2023-11-04 22:51:14', '2023-11-05 01:49:21', NULL, NULL);
+(2, '2023-11-06 00:00:00', 2, 'Leilão/2', '<p><strong>Estou precisando de:</strong></p>\r\n<ul>\r\n<li style=\"font-weight: bold;\"><strong>200 sacos de cimento;</strong></li>\r\n<li style=\"font-weight: bold;\"><strong>2000 tijolos;</strong></li>\r\n<li style=\"font-weight: bold;\"><strong>1500 pisos.</strong></li>\r\n</ul>', '2023-11-04 22:51:14', '2023-11-28 03:53:53', NULL, NULL),
+(4, '2023-11-27 00:00:00', 2, 'Leilão - Contrução casa sonho', '<p><strong>Estou a procura desses materiais com urg&ecirc;ncia para contru&ccedil;&atilde;o da minha casa:</strong></p>\r\n<ul>\r\n<li><strong>3000 Tijolos;</strong></li>\r\n<li><strong>520 sacos de cimento;</strong></li>\r\n<li><strong>200 m de areia fina;</strong></li>\r\n<li><strong>200 m de pedra brita.</strong></li>\r\n</ul>', '2023-11-27 00:07:19', '2023-11-27 00:07:19', 1, NULL),
+(5, '2023-11-28 00:00:00', 10, 'Leilão em aberto', '<p>Preciso de 25 metros de areia m&eacute;dia</p>', '2023-11-28 02:37:00', '2023-11-28 02:37:00', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -358,8 +364,14 @@ CREATE TABLE `materiais` (
 --
 
 INSERT INTO `materiais` (`id`, `nome`, `marca`, `created_at`, `updated_at`, `foto`, `comprador_id`) VALUES
-(1, '1.000 Tijolos', 'Baiano', '2023-08-06 00:28:39', '2023-09-22 02:46:14', 'materiais\\August2023\\KgPVEoed29vsYfknmiJl.jpg', 1),
-(2, 'Cimento', 'CP-II F', '2023-08-06 00:42:30', '2023-09-22 02:46:05', 'materiais\\August2023\\kICnICME8TZmNrohyIiE.jpg', 1);
+(1, 'Tijolo', 'Baiano', '2023-08-06 00:28:39', '2023-11-28 02:04:05', 'materiais\\August2023\\KgPVEoed29vsYfknmiJl.jpg', 1),
+(2, 'Cimento', 'CP-II F', '2023-08-06 00:42:30', '2023-09-22 02:46:05', 'materiais\\August2023\\kICnICME8TZmNrohyIiE.jpg', 1),
+(4, 'Areia Média', '**', '2023-11-28 02:06:30', '2023-11-28 02:06:30', 'materiais\\November2023\\MLNSdw8IxALjYh0MH9ro.jpg', 1),
+(5, 'Piso Porcelanato Bege', 'Cerâmica Portinari.', '2023-11-28 02:09:22', '2023-11-28 02:09:22', 'materiais\\November2023\\dzNTEwfmGMPLNKryXeHL.jpg', 1),
+(6, 'Areia Média', '**', '2023-11-28 02:34:50', '2023-11-28 02:34:50', 'materiais\\November2023\\2dViJt6pp3eDYrWitDEx.jpg', 10),
+(7, 'Tijolo', 'Baiano', '2023-11-28 03:10:08', '2023-11-28 03:11:26', 'materiais\\November2023\\6bEKoxEc2y4XLEXHiouF.jpg', 2),
+(8, 'Cimento', 'CP-II F', '2023-11-28 03:12:35', '2023-11-28 03:12:35', 'materiais\\November2023\\n54r0OoGP8oO2YGzbeZJ.jpg', 2),
+(9, 'Piso Porcelanato Bege', 'Cerâmica Portinari', '2023-11-28 03:13:42', '2023-11-28 03:13:42', 'materiais\\November2023\\xkwub1spFSwEATxFvmyn.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -425,7 +437,7 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (15, 1, 'Materiais', '', '_self', 'voyager-treasure-open', NULL, NULL, 16, '2022-12-08 19:37:17', '2022-12-08 19:37:17', 'voyager.materiais.index', NULL),
 (16, 1, 'Leilões', '', '_self', 'voyager-data', NULL, NULL, 17, '2022-12-08 19:40:53', '2022-12-08 19:40:53', 'voyager.leiloes.index', NULL),
 (17, 1, 'Lances', '', '_self', 'voyager-hammer', NULL, NULL, 18, '2022-12-21 03:09:30', '2022-12-21 03:09:30', 'voyager.lances.index', NULL),
-(18, 1, 'Item Leilaos', '', '_self', 'voyager-hammer', NULL, NULL, 19, '2022-12-21 03:14:27', '2022-12-21 03:14:27', 'voyager.item-leilao.index', NULL);
+(18, 1, 'Itens do Leilão', '', '_self', 'voyager-hammer', '#000000', NULL, 19, '2022-12-21 03:14:27', '2023-11-28 02:57:19', 'voyager.item-leilao.index', 'null');
 
 -- --------------------------------------------------------
 
@@ -706,11 +718,15 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (59, 1),
 (60, 1),
 (61, 1),
+(61, 2),
 (61, 3),
 (62, 1),
+(62, 2),
 (62, 3),
 (63, 1),
+(63, 2),
 (64, 1),
+(64, 2),
 (65, 1);
 
 -- --------------------------------------------------------
@@ -904,12 +920,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `settings`, `created_at`, `updated_at`, `empresa_id`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$DcaZZFKg3IHWu5.KwJnJtOw37OwWC2juM2yEch5KXVgSTzr4g2pxC', NULL, NULL, NULL, 'H4b4MuUlt2ptrLuy5Sv7xmIj9CnNqtfROHbgVjROhliUs1bxIkDZC1IO9jSs', NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29', NULL),
+(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$DcaZZFKg3IHWu5.KwJnJtOw37OwWC2juM2yEch5KXVgSTzr4g2pxC', NULL, NULL, NULL, 'Yb3PEvySMWmeAS2Hvb0quywzpzIywRw4YvDhHoFjpew2KO9HS0enzSMs9Udr', NULL, '2022-12-08 19:14:29', '2022-12-08 19:14:29', NULL),
 (2, 2, 'usuario normal', 'usuario@usuario.com', 'users/default.png', NULL, '$2y$10$8WyOvplEBm9jUqumjiNT7.JAaX8g.cCreaONYFIKq0i2VuOMLzeim', NULL, NULL, NULL, NULL, '{\"locale\":\"pt_br\"}', '2023-08-06 02:01:49', '2023-08-06 02:01:49', NULL),
 (3, 2, 'ana clara', 'ana@ana.com', 'users/default.png', NULL, '$2y$10$2BQy9BiiCLqVrW8w.Y9t4upcs/uEOVUDHgKgSMzk5gQK7cTxX/Aly', NULL, NULL, NULL, NULL, NULL, '2023-08-06 02:07:13', '2023-08-06 02:07:13', NULL),
 (4, NULL, 'Gestor', 'gestor@gestor.com', 'users/default.png', NULL, '$2y$10$D6gPYIGEdBy0ggjWd7yTu.IwEMTIM9Wqnw28/vxylq2d20zGA.H7K', NULL, NULL, NULL, NULL, '{\"locale\":\"al\"}', '2023-09-17 03:36:49', '2023-09-17 03:36:49', NULL),
 (6, 2, 'Erica Torres', 'erica123@gmail.com', 'users/default.png', NULL, '$2y$10$TK8KVG790oXzUvkcJya/quIaziiFEdRoHM4/GHfPqJi5dUWpujxaG', NULL, NULL, NULL, NULL, NULL, '2023-10-01 01:55:33', '2023-10-01 01:55:34', NULL),
-(7, 2, 'fornecedor', 'fornecedor@123.com', 'users/default.png', NULL, '$2y$10$3Ju1wLV/Fs5RKm0bit61W.wiseKJ56wLxJUh1g3PsuYuyDxTp5JTO', NULL, NULL, NULL, NULL, NULL, '2023-10-01 02:01:41', '2023-10-01 02:01:41', NULL);
+(7, 2, 'fornecedor', 'fornecedor@123.com', 'users/default.png', NULL, '$2y$10$3Ju1wLV/Fs5RKm0bit61W.wiseKJ56wLxJUh1g3PsuYuyDxTp5JTO', NULL, NULL, NULL, NULL, NULL, '2023-10-01 02:01:41', '2023-10-01 02:01:41', NULL),
+(8, 2, 'Érica', 'ericaa@gmail.com', 'users/default.png', NULL, '$2y$10$3sTuOB/1XKC4hypSgw9dIOcN1EOZqbRS4PYBAK6BKFKGQxG4/p5vy', NULL, NULL, NULL, NULL, NULL, '2023-11-27 00:13:36', '2023-11-27 00:13:36', NULL),
+(9, 2, 'fulana', 'fulana12@gmail.com', 'users/default.png', NULL, '$2y$10$EzXuihpq91m/t3REojtKL.Ye01Rbz.DFIZvRCAncvIIq4jUyfF62e', NULL, NULL, NULL, NULL, NULL, '2023-11-27 07:22:07', '2023-11-27 07:22:07', NULL),
+(10, 2, 'fulana', 'fulana22@gmail.com', 'users/default.png', NULL, '$2y$10$ctqwgpRt6s9oT35Xw2AwjOMNZN13OsKIsPc9wdkHADuFBPCUzdAWG', NULL, NULL, NULL, NULL, NULL, '2023-11-28 02:14:16', '2023-11-28 02:14:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -1100,7 +1119,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de tabela `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT de tabela `data_types`
@@ -1124,25 +1143,25 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de tabela `item_leilao`
 --
 ALTER TABLE `item_leilao`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `lances`
 --
 ALTER TABLE `lances`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `leiloes`
 --
 ALTER TABLE `leiloes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `materiais`
 --
 ALTER TABLE `materiais`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `menus`
@@ -1208,7 +1227,7 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para despejos de tabelas

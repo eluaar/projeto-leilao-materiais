@@ -11,14 +11,14 @@
     <img src="{{Voyager::image($venda->itemLeilao->material->foto)}}" class="card-img-top" alt="...">
     <div class="card-body">
       <h3 class="card-title">{{$venda->itemLeilao->material->nome}} - {{$venda->itemLeilao->material->marca}} </h3>
-      <p class="card-text">
+      <p class="card-text"><strong>
      Quantidade:  {{$venda->itemLeilao->quantidade}} <br>
      Preço: R$ {{$venda->valor}} <br>
      Comprador:  {{$venda->itemLeilao->leilao->comprador->name}} <br>
      Prazo de entrega:  {{$venda->prazo_entrega}} <br>
      CEP: {{$venda->itemLeilao->leilao->cep}}
        {!!$venda->observacao!!}
-     </p>
+     </strong></p>
     </div>
   </div>
   @empty

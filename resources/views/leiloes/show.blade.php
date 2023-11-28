@@ -10,12 +10,13 @@
             </div>
         </div>
     </div>
-    <h2 class="text-center my-5">Materiais</h2>
+    <h2 class="text-center my-5 ">Materiais</h2>
     @foreach ($leilao->itens as $itemLeilao)
-        <div class="card  mx-3" style="width: 18rem;">
+    <section class="d-flex justify-content-center flex-nowrap">
+        <div class="card mx-3" style="width: 15rem;">
             <img src="{{ Voyager::image($itemLeilao->material->foto) }}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h3 class="card-title">{{ $itemLeilao->material->nome }} - {{ $itemLeilao->material->marca }} </h3>
+                <h3 class="card-title mx-3">{{ $itemLeilao->material->nome }} - {{ $itemLeilao->material->marca }} </h3>
                 <p class="card-text">
                     Quantidade: {{ $itemLeilao->quantidade }}
                 </p>
@@ -29,14 +30,6 @@
                 @endif
             </div>
         </div>
+    </section>
     @endforeach
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
-        </ul>
-    </nav>
 @endsection

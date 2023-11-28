@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 
 
 class Material extends Model
@@ -29,7 +30,7 @@ class Material extends Model
         if ($user->hasRole('admin')) {
             return $query;
         }
-        return $query->where('user_id', $user->getKey());
+        return $query->where('comprador_id', $user->getKey());
     }
 
     /**
