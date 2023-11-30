@@ -76,7 +76,7 @@
                     <div class="timeline-heading">
                         <h4 class="subheading">Criar leilão</h4>
                     </div>
-                    <div class="timeline-body"><p class="text-muted">Para criar um leilão basta você estar cadastrado como usuário.<br> Ir no menu dashboard, leilão e listar os itens que necessita. Se for de seu interesse, colocar valor minímo ou estabelecer data limite.</p></div>
+                    <div class="timeline-body"><p class="text-muted">Para criar um leilão basta você estar cadastrado como usuário e logado no sistema.<br> Ir no menu "Painel", em leilão você deverá clicar em adicionar novo leilão, após isso você deverá vincular os itens ao leilão. Se for de seu interesse, colocar valor minímo ou estabelecer data limite.</p></div>
                 </div>
             </li>
             <li>
@@ -85,7 +85,7 @@
                     <div class="timeline-heading">
                         <h4 class="subheading">Dar lance</h4>
                     </div>
-                    <div class="timeline-body"><p class="text-muted">Para dar lance em um leilão você deverá estar cadastrado como usuário.<br> Ir no menu leilão, clicar no botão "Dar lance" e efetuar seu lance.</p></div>
+                    <div class="timeline-body"><p class="text-muted">Para dar lance em um leilão você deverá estar cadastrado como usuário e logado no sistema.<br> Ir no menu leilão, clicar no botão "Dar lance" e efetuar seu lance.</p></div>
                 </div>
             </li>
             <li class="timeline-inverted">
@@ -94,7 +94,7 @@
                     <div class="timeline-heading">
                         <h4 class="subheading">Finalizar leilão</h4>
                     </div>
-                    <div class="timeline-body"><p class="text-muted">Para finalizar seu leilão você deverá estar cadastrado como usuário.<br> Caso você tenha escolhido um leilão com valor minímo e ele não ter recebido nenhum lance, poderá ser encerrado quando clicar no botão "Encerrar leilão". <br> Se tiver escolhido o leilão sem valor minímo com data limite, precisará esperar pela data-fim ou então clicar no botão "Encerrar leilão".</p></div>
+                    <div class="timeline-body"><p class="text-muted">Para finalizar seu leilão você deverá estar cadastrado como usuário e logado no sistema.<br> Caso você tenha escolhido um leilão com valor minímo e ele não ter recebido nenhum lance, poderá ser encerrado quando clicar no botão "Encerrar leilão". <br> Se tiver escolhido o leilão sem valor minímo com data limite, precisará esperar pela data-fim ou então clicar no botão "Encerrar leilão".</p></div>
                 </div>
             </li>
             <li>

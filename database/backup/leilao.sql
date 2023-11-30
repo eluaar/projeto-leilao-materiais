@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Nov-2023 às 01:02
+-- Tempo de geração: 01-Dez-2023 às 00:19
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.1
 
@@ -284,7 +284,7 @@ INSERT INTO `item_leilao` (`id`, `leilao_id`, `material_id`, `created_at`, `upda
 (1, 2, 2, '2023-11-05 01:50:40', '2023-11-19 02:46:36', 200, NULL, 4),
 (2, 5, 4, '2023-11-28 02:49:22', '2023-11-28 02:49:22', 25, NULL, NULL),
 (3, 2, 1, '2023-11-28 03:14:18', '2023-11-28 03:14:18', 2000, NULL, NULL),
-(4, 2, 5, '2023-11-28 03:15:10', '2023-11-28 03:15:10', 1500, NULL, NULL);
+(4, 2, 5, '2023-11-28 03:15:10', '2023-11-30 21:36:35', 1500, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -339,9 +339,10 @@ CREATE TABLE `leiloes` (
 --
 
 INSERT INTO `leiloes` (`id`, `data_limite`, `comprador_id`, `nome`, `descricao`, `created_at`, `updated_at`, `status`, `cep`) VALUES
-(2, '2023-11-06 00:00:00', 2, 'Leilão/2', '<p><strong>Estou precisando de:</strong></p>\r\n<ul>\r\n<li style=\"font-weight: bold;\"><strong>200 sacos de cimento;</strong></li>\r\n<li style=\"font-weight: bold;\"><strong>2000 tijolos;</strong></li>\r\n<li style=\"font-weight: bold;\"><strong>1500 pisos.</strong></li>\r\n</ul>', '2023-11-04 22:51:14', '2023-11-28 03:53:53', NULL, NULL),
-(4, '2023-11-27 00:00:00', 2, 'Leilão - Contrução casa sonho', '<p><strong>Estou a procura desses materiais com urg&ecirc;ncia para contru&ccedil;&atilde;o da minha casa:</strong></p>\r\n<ul>\r\n<li><strong>3000 Tijolos;</strong></li>\r\n<li><strong>520 sacos de cimento;</strong></li>\r\n<li><strong>200 m de areia fina;</strong></li>\r\n<li><strong>200 m de pedra brita.</strong></li>\r\n</ul>', '2023-11-27 00:07:19', '2023-11-27 00:07:19', 1, NULL),
-(5, '2023-11-28 00:00:00', 10, 'Leilão em aberto', '<p>Preciso de 25 metros de areia m&eacute;dia</p>', '2023-11-28 02:37:00', '2023-11-28 02:37:00', 1, NULL);
+(2, '2023-11-06 00:00:00', 2, 'Leilão/2', '<p>Estou precisando de:</p>\r\n<ul>\r\n<li>200 sacos de cimento;</li>\r\n<li>2000 tijolos;</li>\r\n<li>1500 pisos.</li>\r\n</ul>', '2023-11-04 22:51:14', '2023-11-30 22:12:28', NULL, NULL),
+(4, '2023-11-27 00:00:00', 2, 'Leilão - Contrução casa sonho', '<p>Estou a procura desses materiais com urg&ecirc;ncia para contru&ccedil;&atilde;o da minha casa:</p>\r\n<ul>\r\n<li>3000 Tijolos;</li>\r\n<li>520 sacos de cimento;</li>\r\n<li>200 m de areia fina;</li>\r\n<li>200 m de pedra brita.</li>\r\n</ul>', '2023-11-27 00:07:19', '2023-11-30 22:12:22', 1, NULL),
+(5, '2023-11-28 00:00:00', 10, 'Leilão em aberto', '<p style=\"text-align: left;\">Estou a procura do segunte material:</p>\r\n<ul>\r\n<li style=\"text-align: left;\">25 m de areia m&eacute;dia</li>\r\n</ul>', '2023-11-28 02:37:00', '2023-11-30 22:00:33', 1, NULL),
+(6, '2023-12-02 00:00:00', 2, 'Leilão segundo teste', '<p style=\"text-align: left;\">Ol&aacute;, estou a procura dos seguintes materiais:&nbsp;</p>\r\n<ul>\r\n<li>200m de areia;</li>\r\n<li>300 pisos de porcelanato;</li>\r\n<li>20 sacos de cimento;</li>\r\n<li>400 tijolos.</li>\r\n</ul>', '2023-11-30 21:31:45', '2023-11-30 22:12:10', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1155,7 +1156,7 @@ ALTER TABLE `lances`
 -- AUTO_INCREMENT de tabela `leiloes`
 --
 ALTER TABLE `leiloes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `materiais`

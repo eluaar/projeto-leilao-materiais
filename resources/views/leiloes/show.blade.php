@@ -11,25 +11,25 @@
         </div>
     </div>
     <h2 class="text-center my-5 ">Materiais</h2>
-    @foreach ($leilao->itens as $itemLeilao)
     <section class="d-flex justify-content-center flex-nowrap">
+    @foreach ($leilao->itens as $itemLeilao)
         <div class="card mx-3" style="width: 15rem;">
             <img src="{{ Voyager::image($itemLeilao->material->foto) }}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h3 class="card-title mx-3">{{ $itemLeilao->material->nome }} - {{ $itemLeilao->material->marca }} </h3>
+                <h3 class="card-title mx-1"><strong>{{ $itemLeilao->material->nome }} - {{ $itemLeilao->material->marca }} </strong></h3>
                 <p class="card-text">
                     Quantidade: {{ $itemLeilao->quantidade }}
                 </p>
-                @if ($itemLeilao->lance_arrematante_id == null and $leilao->comprador_id != Auth::user()->id)
+                @if ($itemLeilao->lance_arrematante_id == null and Auth::user() != null and $leilao->comprador_id != Auth::user()?->id)
                 <a href="{{ route('leiloes.efetuar_lance', ['id' => $itemLeilao->id]) }}"
                     class="btn btn-dark btn-sm">Efetuar lance</a>
                 @endif
-                @if ($leilao->comprador_id == Auth::user()->id)
+                @if ($leilao->comprador_id == Auth::user()?->id)
                 <a href="{{ route('lances.itemLeilao', ['id' => $itemLeilao->id]) }}" class="btn btn-dark btn-sm">Visualizar
                     lances</a>
                 @endif
             </div>
         </div>
-    </section>
     @endforeach
+</section>
 @endsection

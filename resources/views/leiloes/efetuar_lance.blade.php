@@ -2,7 +2,7 @@
 
 @section('conteudo')
 
-<h1 class="text-center">Efetuar lance</h1>
+<h1 class="text-center my-5">Efetuar lance</h1>
 
 <form class="row g-3" action="{{route('lances')}}" method="post">
     @csrf

@@ -17,7 +17,7 @@
     </div>
   </div>
   @empty
-    <p class="alert alert-info">Nenhum material cadastrado</p>
+    <p class="alert alert-dark">Nenhum material cadastrado</p>
 @endforelse
 </section>
 

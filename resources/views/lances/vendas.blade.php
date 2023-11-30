@@ -22,7 +22,7 @@
     </div>
   </div>
   @empty
-    <p class="alert alert-info">Nenhuma venda efetuada</p>
+    <p class="alert alert-dark">Nenhuma venda efetuada</p>
 @endforelse
 </section>
 

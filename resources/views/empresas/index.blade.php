@@ -18,7 +18,7 @@
     </div>
   </div>
   @empty
-    <p class="alert alert-info">Nenhum leilão disponivel</p>
+    <p class="alert alert-dark">Nenhuma empresa cadastrada</p>
 @endforelse
 </section>
 @endsection
